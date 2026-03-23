@@ -32,11 +32,11 @@ const footerColumns: FooterColumn[] = [
     ],
   },
   {
-    heading: "Company",
+    heading: "Shop",
     links: [
-      { label: "Contact", href: "/contact" },
-      { label: "Technical Overview", href: "/contact#overview" },
-      { label: "Integration Discussion", href: "/contact#integration" },
+      { label: "All Products", href: "/shop" },
+      { label: "Enterprise Orders", href: "/shop#enterprise" },
+      { label: "Contact to Order", href: "/contact" },
     ],
   },
 ];
