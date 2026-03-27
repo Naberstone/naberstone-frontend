@@ -23,7 +23,6 @@ const navLinks: NavLink[] = [
   { label: "Platform", href: "/platform" },
   { label: "Applications", href: "/applications" },
   { label: "Standards", href: "/standards" },
-  { label: "Partnerships", href: "/partnerships" },
   { label: "Shop", href: "/shop" },
   { label: "Contact", href: "/contact" },
 ];

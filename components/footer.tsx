@@ -26,9 +26,9 @@ const footerColumns: FooterColumn[] = [
   {
     heading: "Engagement",
     links: [
-      { label: "Partnerships", href: "/partnerships" },
-      { label: "OEM Integration", href: "/partnerships#oem" },
-      { label: "Federal Pathways", href: "/partnerships#federal" },
+      { label: "Contact", href: "/contact" },
+      { label: "OEM Integration", href: "/contact#oem" },
+      { label: "Federal Pathways", href: "/contact#federal" },
     ],
   },
   {

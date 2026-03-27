@@ -190,19 +190,19 @@ const engagementPathways: EngagementPathway[] = [
     title: "OEM Integration",
     description:
       "Engineering collaboration to embed RFIS capability into battery systems, enclosures, and power infrastructure at the product level.",
-    href: "/partnerships#oem",
+    href: "/contact#oem",
   },
   {
     title: "Federal Pathways",
     description:
       "Procurement-aligned engagement for defense, intelligence, and federal civilian infrastructure programs.",
-    href: "/partnerships#federal",
+    href: "/contact#federal",
   },
   {
     title: "Strategic Partnerships",
     description:
       "Channel and ecosystem relationships with operators, developers, and AHJ-facing integrators.",
-    href: "/partnerships#strategic",
+    href: "/contact#strategic",
   },
 ];
 
