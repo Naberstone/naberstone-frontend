@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { FileText, ArrowRight } from "lucide-react";
+import { FileText, Shield, ClipboardCheck, ArrowRight } from "lucide-react";
 import { buttonVariants } from "@/lib/button-variants";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionLabel } from "@/components/shared/section-label";
@@ -15,15 +16,11 @@ export const metadata: Metadata = {
 // ─── Interfaces ──────────────────────────────────────────────────────────────
 
 interface StandardsCard {
+  icon: React.ElementType;
   code: string;
   title: string;
   context: string;
   rfisRelevance: string;
-}
-
-interface CodeAdoptionPoint {
-  point: string;
-  detail: string;
 }
 
 interface ValidationLibraryItem {
@@ -35,6 +32,7 @@ interface ValidationLibraryItem {
 
 const standardsCards: StandardsCard[] = [
   {
+    icon: FileText,
     code: "UL 9540A",
     title:
       "Test Method for Evaluating Thermal Runaway Fire Propagation in Battery Energy Storage Systems",
@@ -44,6 +42,7 @@ const standardsCards: StandardsCard[] = [
       "RFIS architecture is designed to produce the propagation limitation outcomes that UL 9540A testing evaluates. Systems with documented RFIS intervention demonstrate measurable reduction in propagation spread — producing the test evidence AHJs and insurers require.",
   },
   {
+    icon: Shield,
     code: "NFPA 855",
     title:
       "Standard for the Installation of Stationary Energy Storage Systems",
@@ -53,36 +52,14 @@ const standardsCards: StandardsCard[] = [
       "RFIS systems are engineered in alignment with NFPA 855's direction toward performance-based safety evidence. Naberstone's documentation framework supports AHJ submission requirements as the 2026 revision takes effect across jurisdictions.",
   },
   {
-    code: "AHJ Documentation",
+    icon: ClipboardCheck,
+    code: "AHJ DOCUMENTATION",
     title:
       "Authority Having Jurisdiction — Performance-Based Submissions",
     context:
       "Authorities Having Jurisdiction increasingly require performance-based documentation for ESS and electrified infrastructure installations — moving beyond prescriptive component listing toward demonstrated outcome evidence. This shift mirrors broader trends in building code toward engineered performance.",
     rfisRelevance:
       "Naberstone's documentation framework produces the submission evidence AHJs require: propagation containment testing, sensor and response performance data, lifecycle maintenance records, and post-incident reporting. RFIS deployments are designed to be auditable from day one.",
-  },
-];
-
-const codeAdoptionPoints: CodeAdoptionPoint[] = [
-  {
-    point: "Standards lead, adoption follows",
-    detail:
-      "UL 9540A and NFPA 855 have established the performance-based framework — but code adoption across jurisdictions is uneven. Early-adopting AHJs are already requiring documented propagation control. The rest will follow.",
-  },
-  {
-    point: "Insurance is moving faster than code",
-    detail:
-      "Commercial property and infrastructure insurers are adjusting underwriting requirements for electrified assets ahead of formal code adoption — creating market pressure for documented propagation management regardless of local jurisdiction.",
-  },
-  {
-    point: "Incident history is accelerating requirements",
-    detail:
-      "High-profile ESS and EV fires are accelerating regulatory attention. Each significant incident increases pressure on AHJs, insurers, and operators to require demonstrable propagation control — not just installed suppression.",
-  },
-  {
-    point: "Performance-based submissions are the future",
-    detail:
-      "As electrification scales, prescriptive codes cannot keep pace with new chemistries and system configurations. Performance-based submissions — supported by test evidence and documented system behavior — are the long-term compliance direction.",
   },
 ];
 
@@ -124,150 +101,169 @@ const validationLibraryItems: ValidationLibraryItem[] = [
 export default function StandardsPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative pt-32 pb-24 overflow-hidden">
-        <div
-          className="absolute top-0 left-0 w-[600px] h-[400px] pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse at top left, oklch(0.72 0.175 48 / 0.05) 0%, transparent 70%)",
-          }}
+      {/* ── Hero ─────────────────────────────────────────────────────────── */}
+      <section className="relative min-h-[85vh] flex items-center overflow-hidden">
+        {/* Background image */}
+        <Image
+          src="/images/hero-standards.jpg"
+          alt="Industrial containers with UL 9540A certification labeling"
+          fill
+          priority
+          className="object-cover object-center"
         />
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/65 to-black/40" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32">
           <SectionLabel>Standards &amp; Validation</SectionLabel>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground max-w-4xl leading-[1.05] mb-8">
-            The regulatory landscape is shifting.
+
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white max-w-4xl leading-[1.08] mb-6">
+            The Regulatory Landscape Is Shifting.
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
+
+          <p className="text-lg md:text-xl font-semibold text-white/90 max-w-3xl leading-snug mb-4">
+            Systems That Can&apos;t Demonstrate Controlled Failure Behavior Are
+            No Longer Approved.
+          </p>
+
+          <p className="text-base md:text-lg text-white/70 max-w-2xl leading-relaxed mb-10">
             UL 9540A, NFPA 855, and AHJ performance-based submissions are
             establishing a compliance environment that legacy suppression systems
             cannot satisfy. RFIS is designed for this environment.
           </p>
+
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link
+              href="/contact#overview"
+              className={cn(buttonVariants({ size: "lg" }), "glow-amber")}
+            >
+              Request Technical Overview
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+            <Link
+              href="/contact#deployment"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "border-white/30 text-white hover:bg-white/10 hover:text-white"
+              )}
+            >
+              Schedule Deployment Discussion
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Standards cards */}
+      {/* ── Three Anchors — Standards Cards ───────────────────────────────── */}
       <section className="py-24 lg:py-32 border-t border-border" id="ul9540a">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionLabel>Standards Context</SectionLabel>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground max-w-3xl mb-16">
-            Three anchors of the performance-based safety framework.
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground max-w-4xl mb-16">
+            Three Anchors Of The Performance-Based Safety Framework.
           </h2>
 
           <div className="space-y-6">
-            {standardsCards.map((standard, i) => (
-              <div
-                key={i}
-                id={i === 1 ? "nfpa855" : undefined}
-                className="border border-border rounded-lg overflow-hidden"
-              >
-                <div className="bg-card px-8 py-6 border-b border-border">
-                  <div className="flex items-start gap-4">
-                    <FileText className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="text-xs font-semibold tracking-[0.15em] uppercase text-primary mb-1">
-                        {standard.code}
+            {standardsCards.map((standard, i) => {
+              const Icon = standard.icon;
+              return (
+                <div
+                  key={i}
+                  id={
+                    i === 1
+                      ? "nfpa855"
+                      : i === 2
+                        ? "ahj"
+                        : undefined
+                  }
+                  className="border border-border rounded-lg overflow-hidden"
+                >
+                  {/* Header bar */}
+                  <div className="bg-card px-6 md:px-8 py-5 border-b border-border">
+                    <div className="flex items-start gap-4">
+                      <Icon className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <div>
+                        <p className="text-xs font-semibold tracking-[0.15em] uppercase text-primary mb-1">
+                          {standard.code}
+                        </p>
+                        <h3 className="text-sm font-medium text-foreground leading-snug">
+                          {standard.title}
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Two-column body */}
+                  <div className="grid grid-cols-1 lg:grid-cols-2">
+                    {/* Context column */}
+                    <div className="p-6 md:p-8 lg:border-r border-border">
+                      <p className="text-xs font-semibold tracking-[0.15em] uppercase text-muted-foreground mb-4">
+                        Context
                       </p>
-                      <h3 className="text-sm font-medium text-foreground">
-                        {standard.title}
-                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {standard.context}
+                      </p>
+                    </div>
+
+                    {/* RFIS Relevance column */}
+                    <div className="p-6 md:p-8 bg-primary/[0.04]">
+                      <p className="text-xs font-semibold tracking-[0.15em] uppercase text-primary mb-4">
+                        RFIS Relevance
+                      </p>
+                      <p className="text-sm text-foreground leading-relaxed">
+                        {standard.rfisRelevance}
+                      </p>
                     </div>
                   </div>
                 </div>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-                  <div className="p-8 border-r border-border">
-                    <p className="text-xs font-semibold tracking-[0.15em] uppercase text-muted-foreground mb-4">
-                      Context
-                    </p>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {standard.context}
-                    </p>
-                  </div>
-                  <div className="p-8 bg-secondary/10">
-                    <p className="text-xs font-semibold tracking-[0.15em] uppercase text-primary/70 mb-4">
-                      RFIS Relevance
-                    </p>
-                    <p className="text-sm text-foreground leading-relaxed">
-                      {standard.rfisRelevance}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Code adoption lag */}
-      <section className="py-24 lg:py-32 bg-card border-y border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <SectionLabel>Code Adoption &amp; Performance-Based Submissions</SectionLabel>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground max-w-3xl mb-16">
-            The standard is set. Adoption follows.
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {codeAdoptionPoints.map((item, i) => (
-              <div
-                key={i}
-                className="border border-border rounded-lg p-6 hover:border-primary/50 transition-colors"
-              >
-                <div className="flex items-baseline gap-3 mb-3">
-                  <span className="text-xs font-mono text-primary/30">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className="text-sm font-semibold text-foreground">
-                    {item.point}
-                  </h3>
-                </div>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  {item.detail}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Validation Library */}
-      <section className="py-24 lg:py-32">
+      {/* ── Validation Library ────────────────────────────────────────────── */}
+      <section className="py-24 lg:py-32 border-t border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionLabel>Validation Library</SectionLabel>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            {/* Left column — copy */}
             <div>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-6">
-                Documentation that satisfies the compliance environment.
+                Documentation That Satisfies The Compliance Environment.
               </h2>
               <p className="text-base text-muted-foreground leading-relaxed mb-6">
                 Naberstone&apos;s validation framework is built to produce the
-                documentation evidence that AHJs, insurers, and operators need —
-                not just at commissioning, but throughout the system lifecycle.
+                documentation evidence that AHJs, insurers, and operators need
+                — not just at commissioning, but throughout the system
+                lifecycle.
               </p>
               <p className="text-base text-muted-foreground leading-relaxed mb-10">
                 Qualified operators and agencies can request access to the
                 Naberstone Validation Library — including test methodology
-                summaries, propagation containment evidence, and AHJ submission
-                templates.
+                summaries, propagation containment evidence, and AHJ
+                submission templates.
               </p>
               <Link
                 href="/contact#overview"
                 className={cn(buttonVariants({ size: "lg" }), "glow-amber")}
               >
-                Request Validation Library Access{" "}
+                Request Validation Library Access
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 gap-3">
+            {/* Right column — validation items */}
+            <div className="space-y-3">
               {validationLibraryItems.map((item, i) => (
                 <Card
                   key={i}
                   className="bg-card border-border hover:border-primary/50 transition-colors"
                 >
                   <CardContent className="flex items-start gap-4 p-4">
-                    <div className="h-1.5 w-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                    <div className="h-2 w-2 rounded-full bg-primary mt-1.5 flex-shrink-0" />
                     <div>
-                      <p className="text-xs font-semibold text-foreground mb-1">
+                      <p className="text-sm font-semibold text-foreground mb-1">
                         {item.label}
                       </p>
                       <p className="text-xs text-muted-foreground leading-relaxed">

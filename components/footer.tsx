@@ -26,17 +26,17 @@ const footerColumns: FooterColumn[] = [
   {
     heading: "Engagement",
     links: [
-      { label: "Contact", href: "/contact" },
-      { label: "OEM Integration", href: "/contact#oem" },
-      { label: "Federal Pathways", href: "/contact#federal" },
+      { label: "Partnerships", href: "/partnerships" },
+      { label: "OEM Integration", href: "/partnerships#oem" },
+      { label: "Federal Pathways", href: "/partnerships#federal" },
     ],
   },
   {
-    heading: "Shop",
+    heading: "Company",
     links: [
-      { label: "All Products", href: "/shop" },
-      { label: "Enterprise Orders", href: "/shop#enterprise" },
-      { label: "Contact to Order", href: "/contact" },
+      { label: "Contact", href: "/contact" },
+      { label: "Technical Overview", href: "/contact#overview" },
+      { label: "Integration Discussion", href: "/contact#integration" },
     ],
   },
 ];

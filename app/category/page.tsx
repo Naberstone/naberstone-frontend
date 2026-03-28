@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, XCircle, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, XCircle } from "lucide-react";
 import { buttonVariants } from "@/lib/button-variants";
 import { SectionLabel } from "@/components/shared/section-label";
 import { cn } from "@/lib/utils";
@@ -8,98 +9,94 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "RFIS Category | Naberstone Safety Solutions",
   description:
-    "Reactive Fire Interruption Systems (RFIS) — understanding the category that addresses lithium-chemistry propagation in critical infrastructure.",
+    "Reactive Fire Interruption Systems (RFIS) — a new category of active safety architecture that stops lithium-chemistry propagation before it becomes catastrophic.",
 };
-
-// ─── Interfaces ──────────────────────────────────────────────────────────────
-
-interface IsIsNot {
-  is: string[];
-  isNot: string[];
-}
-
-interface CascadeStage {
-  stage: string;
-  description: string;
-}
-
-interface CategoryDriver {
-  driver: string;
-  detail: string;
-}
 
 // ─── Content ─────────────────────────────────────────────────────────────────
 
-const rfisDefinition = {
-  short:
-    "Reactive Fire Interruption Systems (RFIS) are active safety architectures that detect early electrochemical failure signatures, interrupt thermal propagation pathways, and contain event boundaries in lithium-chemistry and high-density electrified environments.",
-  long: "RFIS represents a fundamental architectural shift from suppression — which addresses the downstream flame event — to interruption, which addresses the upstream failure mechanism. The system operates at the chemistry layer, targeting the conditions that enable cell-to-cell propagation before runaway conditions become self-sustaining.",
-};
+const rfisIs = [
+  "A chemistry-layer safety system that operates before ignition",
+  "A propagation interruption architecture — stops cascade before it establishes",
+  "Standards-aligned for UL 9540A, NFPA 855, and evolving AHJ requirements",
+  "An auditable infrastructure layer with full documentation and compliance traceability",
+  "Full lifecycle visibility — from early detection through post-event reporting",
+];
 
-const isIsNot: IsIsNot = {
-  is: [
-    "An active safety architecture operating at the chemistry layer",
-    "A propagation interruption system — designed to stop cascade before it establishes",
-    "A standards-aligned approach designed for UL 9540A and NFPA 855 compliance evidence",
-    "A documentable, auditable infrastructure layer with lifecycle oversight",
-    "Designed for the electrochemical failure mode of lithium-based systems",
-  ],
-  isNot: [
-    "A fire suppression system — it does not deploy agent after ignition to reduce flame",
-    "A detection-only system — detection is the first stage, not the complete function",
-    "A passive barrier system — RFIS is reactive and active in its intervention",
-    "A retrofit of existing suppression infrastructure",
-    "A single-technology product — it is a system architecture across sensing, decisioning, and deployment",
-  ],
-};
+const rfisIsNot = [
+  "Not a fire suppression system — it does not deploy agent after ignition",
+  "Not a detection-only system — detection is only the first stage",
+  "Not a passive barrier — RFIS is reactive, active, and intervenes directly",
+  "Not a retrofit of existing suppression infrastructure",
+  "Not a product — it is a complete system architecture across sensing, decisioning, and deployment",
+];
 
-const cascadeStages: CascadeStage[] = [
+const cascadeStages = [
   {
-    stage: "Early Indicators",
+    number: "01",
+    title: "Early Warning",
     description:
-      "Electrochemical stress begins producing measurable off-gas precursors and thermal signatures before visible failure. This is the RFIS intervention window.",
+      "Electrochemical stress produces measurable off-gas precursors and thermal signatures before visible failure.",
+    highlight: true,
+    rfisWindow: true,
+    boldNote: "This is when RFIS stops it.",
   },
   {
-    stage: "Cell-Level Failure",
+    number: "02",
+    title: "One Cell Fails",
     description:
-      "A single cell enters thermal runaway. Internal pressure rises, venting begins. Heat generation accelerates. Adjacent cells begin receiving thermal load.",
+      "A single cell enters thermal runaway. Internal pressure rises, venting begins. Heat generation accelerates.",
+    highlight: false,
+    rfisWindow: false,
   },
   {
-    stage: "Propagation Onset",
+    number: "03",
+    title: "It Starts Spreading",
     description:
-      "Thermal energy transfers to adjacent cells. Each new cell entering runaway amplifies the thermal load. The cascade begins to self-sustain.",
+      "Thermal energy transfers to adjacent cells. Each new cell entering runaway amplifies the thermal load. The cascade self-sustains.",
+    highlight: false,
+    rfisWindow: false,
   },
   {
-    stage: "Module-Level Event",
+    number: "04",
+    title: "Bigger Fire Event",
     description:
-      "Multiple cells in runaway. Off-gas concentration reaches flammability thresholds. Secondary ignition risk becomes severe. Event boundary expands.",
+      "Multiple cells in runaway. Off-gas concentration reaches flammability thresholds. Secondary ignition risk becomes severe.",
+    highlight: false,
+    rfisWindow: false,
   },
   {
-    stage: "System-Level Loss",
+    number: "05",
+    title: "Full System Damage",
     description:
-      "Propagation has crossed module and pack boundaries. Structural and facility damage begins. Recovery timeline extends from hours to weeks.",
+      "Propagation crosses module and pack boundaries. Structural and facility damage begins. Recovery timeline extends from hours to weeks.",
+    highlight: false,
+    rfisWindow: false,
   },
 ];
 
-const categoryDrivers: CategoryDriver[] = [
+const categoryDrivers = [
   {
-    driver: "Electrification at infrastructure scale",
-    detail:
+    number: "01",
+    title: "Everything Runs On Batteries",
+    description:
       "Lithium chemistry is now embedded in data centers, grid storage, aviation, defense, and public charging — environments where failure consequence is not isolated to the battery.",
   },
   {
-    driver: "Standards moving to performance-based evidence",
-    detail:
-      "UL 9540A and NFPA 855 are establishing a compliance environment that requires demonstrated propagation control — not just listed components. Suppression systems cannot provide this evidence.",
+    number: "02",
+    title: "Standards Are Changing",
+    description:
+      "UL 9540A and NFPA 855 are establishing compliance environments that require demonstrated propagation control — not just listed components.",
   },
   {
-    driver: "Failure mode mismatch",
-    detail:
+    number: "03",
+    title: "Solving The Wrong Problem",
+    description:
       "Conventional suppression is architecturally mismatched to electrochemical failure. The fire triangle model does not apply to self-oxidizing thermal runaway chemistry.",
   },
   {
-    driver: "Operator liability and documentation requirements",
-    detail:
+    number: "04",
+    title: "Proof Is Now Required",
+    description:
       "AHJ submissions, insurance underwriting, and post-incident liability are driving demand for documentable, traceable safety architecture — not just installed equipment.",
   },
 ];
@@ -109,48 +106,70 @@ const categoryDrivers: CategoryDriver[] = [
 export default function CategoryPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative pt-32 pb-24 overflow-hidden">
+      {/* ── Section 1: Hero ──────────────────────────────────────────────── */}
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+        {/* Background image */}
+        <Image
+          src="/images/hero-category.jpg"
+          alt="Fire and explosion scene illustrating the need for reactive fire interruption"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/70" />
+        {/* Amber gradient accent */}
         <div
-          className="absolute top-0 right-0 w-[600px] h-[400px] pointer-events-none opacity-50"
+          className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse at top right, oklch(0.72 0.175 48 / 0.06) 0%, transparent 70%)",
+              "radial-gradient(ellipse at 30% 80%, oklch(0.72 0.175 48 / 0.10) 0%, transparent 60%)",
           }}
         />
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32">
           <SectionLabel>Category Definition</SectionLabel>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground max-w-4xl leading-[1.05] mb-8">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-white max-w-5xl leading-[1.05] mb-6">
             Reactive Fire Interruption Systems
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed mb-8">
-            {rfisDefinition.short}
+          <p className="text-xl md:text-2xl text-white/80 max-w-3xl leading-snug mb-8 font-medium">
+            Stops Lithium Fires Before They Spread.
+            <br />
+            Before They Become Catastrophic.
           </p>
-          <p className="text-base text-muted-foreground max-w-2xl leading-relaxed">
-            {rfisDefinition.long}
+          <p className="text-base md:text-lg text-white/60 max-w-2xl leading-relaxed">
+            RFIS represents a fundamental shift from suppression — which
+            addresses the downstream flame event — to interruption, which
+            targets the upstream failure mechanism at the chemistry layer before
+            runaway conditions become self-sustaining.
           </p>
         </div>
       </section>
 
-      {/* Is / Is Not */}
+      {/* ── Section 2: Is / Is Not ───────────────────────────────────────── */}
       <section className="py-24 lg:py-32 bg-card border-y border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <SectionLabel>What RFIS Is and Is Not</SectionLabel>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground max-w-3xl mb-16">
-            Precision of category matters.
+          <SectionLabel>What RFIS Is And Is Not</SectionLabel>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground max-w-4xl mb-4">
+            RFIS Is A Different Class Of System
           </h2>
+          <p className="text-base md:text-lg text-muted-foreground max-w-3xl mb-16 leading-relaxed">
+            Most systems are built to react after ignition. RFIS is built to
+            stop the event before it spreads.
+          </p>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Is */}
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <CheckCircle className="h-4 w-4 text-primary" />
-                <span className="text-xs font-semibold tracking-[0.15em] uppercase text-primary">
+            {/* RFIS IS */}
+            <div className="rounded-xl border border-primary/30 bg-primary/[0.03] p-8">
+              <div className="flex items-center gap-3 mb-8">
+                <CheckCircle className="h-5 w-5 text-primary" />
+                <span className="text-sm font-bold tracking-[0.15em] uppercase text-primary">
                   RFIS Is
                 </span>
               </div>
-              <ul className="space-y-4">
-                {isIsNot.is.map((item, i) => (
+              <ul className="space-y-5">
+                {rfisIs.map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <div className="h-1.5 w-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
                     <p className="text-sm text-foreground leading-relaxed">
@@ -161,16 +180,16 @@ export default function CategoryPage() {
               </ul>
             </div>
 
-            {/* Is Not */}
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <XCircle className="h-4 w-4 text-muted-foreground" />
-                <span className="text-xs font-semibold tracking-[0.15em] uppercase text-muted-foreground">
+            {/* RFIS IS NOT */}
+            <div className="rounded-xl border border-amber-500/20 bg-amber-500/[0.02] p-8">
+              <div className="flex items-center gap-3 mb-8">
+                <XCircle className="h-5 w-5 text-amber-400/70" />
+                <span className="text-sm font-bold tracking-[0.15em] uppercase text-amber-400/70">
                   RFIS Is Not
                 </span>
               </div>
-              <ul className="space-y-4">
-                {isIsNot.isNot.map((item, i) => (
+              <ul className="space-y-5">
+                {rfisIsNot.map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <div className="h-1.5 w-1.5 rounded-full bg-muted-foreground/40 mt-2 flex-shrink-0" />
                     <p className="text-sm text-muted-foreground leading-relaxed">
@@ -184,85 +203,129 @@ export default function CategoryPage() {
         </div>
       </section>
 
-      {/* Cascade Problem */}
+      {/* ── Section 3: The Cascade Problem ───────────────────────────────── */}
       <section className="py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionLabel>The Cascade Problem</SectionLabel>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground max-w-3xl mb-6">
-            Understanding the failure sequence.
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground max-w-4xl mb-4">
+            It&rsquo;s Not A Fire. It&rsquo;s A Cascade.
           </h2>
-          <p className="text-base text-muted-foreground max-w-2xl mb-16 leading-relaxed">
-            Thermal runaway in lithium-chemistry systems is not a fire — it is a
-            cascade. Understanding the sequence reveals why RFIS operates at a
-            different point than suppression, and why timing determines outcome.
+          <p className="text-base md:text-lg text-muted-foreground max-w-3xl mb-16 leading-relaxed">
+            Fires from batteries don&rsquo;t start big. They start small — and
+            spread fast. If you wait too long, it&rsquo;s too late.
           </p>
 
-          <div className="relative">
-            {cascadeStages.map((stage, i) => (
-              <div key={i} className="flex gap-8 mb-8 last:mb-0">
-                {/* Timeline */}
-                <div className="flex flex-col items-center">
-                  <div
-                    className={`h-8 w-8 rounded-full border-2 flex items-center justify-center flex-shrink-0 text-xs font-bold font-mono ${
-                      i === 0
-                        ? "border-primary text-primary"
-                        : "border-border text-muted-foreground"
-                    }`}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </div>
-                  {i < cascadeStages.length - 1 && (
-                    <div className="w-px flex-1 bg-border mt-2" />
-                  )}
-                </div>
-                {/* Content */}
-                <div className="pb-8">
-                  <h3
-                    className={`text-sm font-semibold mb-2 ${
-                      i === 0 ? "text-primary" : "text-foreground"
-                    }`}
-                  >
-                    {stage.stage}
-                    {i === 0 && (
-                      <span className="ml-3 text-[9px] tracking-[0.15em] uppercase text-primary/60">
-                        RFIS Window
-                      </span>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+            {/* Left: Cascade timeline */}
+            <div className="relative">
+              {cascadeStages.map((stage, i) => (
+                <div key={i} className="flex gap-6 mb-0">
+                  {/* Timeline rail */}
+                  <div className="flex flex-col items-center">
+                    <div
+                      className={cn(
+                        "h-10 w-10 rounded-full border-2 flex items-center justify-center flex-shrink-0 text-xs font-bold font-mono transition-colors",
+                        stage.highlight
+                          ? "border-primary bg-primary/10 text-primary"
+                          : "border-border text-muted-foreground"
+                      )}
+                    >
+                      {stage.number}
+                    </div>
+                    {i < cascadeStages.length - 1 && (
+                      <div
+                        className={cn(
+                          "w-px flex-1 min-h-[24px]",
+                          i === 0 ? "bg-primary/30" : "bg-border"
+                        )}
+                      />
                     )}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-                    {stage.description}
-                  </p>
+                  </div>
+
+                  {/* Content */}
+                  <div className="pb-8 pt-1.5">
+                    <div className="flex items-center gap-3 mb-1.5">
+                      <h3
+                        className={cn(
+                          "text-base font-semibold",
+                          stage.highlight ? "text-primary" : "text-foreground"
+                        )}
+                      >
+                        {stage.title}
+                      </h3>
+                      {stage.rfisWindow && (
+                        <span className="inline-flex items-center rounded-full bg-primary/10 border border-primary/20 px-2.5 py-0.5 text-[10px] font-bold tracking-[0.12em] uppercase text-primary">
+                          RFIS Window
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed max-w-md">
+                      {stage.description}
+                      {stage.boldNote && (
+                        <>
+                          {" "}
+                          <span className="font-semibold text-primary">
+                            {stage.boldNote}
+                          </span>
+                        </>
+                      )}
+                    </p>
+                  </div>
                 </div>
+              ))}
+            </div>
+
+            {/* Right: Technical diagrams */}
+            <div className="flex flex-col gap-6">
+              <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-border">
+                <Image
+                  src="/images/rfis-architecture-stack.jpg"
+                  alt="RFIS architecture stack — hexagonal system diagram showing layered safety architecture"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
               </div>
-            ))}
+              <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-border">
+                <Image
+                  src="/images/cell-system-flow.jpg"
+                  alt="Cell system flow diagram — RFIS detectors, charging bays, and system integration"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Why Now */}
+      {/* ── Section 4: Why Now ────────────────────────────────────────────── */}
       <section className="py-24 lg:py-32 bg-card border-y border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionLabel>Why This Category Emerges Now</SectionLabel>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground max-w-3xl mb-16">
-            Four converging forces.
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground max-w-4xl mb-4">
+            The Shift Is Already Happening
           </h2>
+          <p className="text-base md:text-lg text-muted-foreground max-w-3xl mb-16 leading-relaxed">
+            Fire protection didn&rsquo;t evolve with electrification. Now the
+            consequences are showing.
+          </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {categoryDrivers.map((driver, i) => (
+            {categoryDrivers.map((driver) => (
               <div
-                key={i}
-                className="border border-border rounded-lg p-6 hover:border-primary/50 transition-colors"
+                key={driver.number}
+                className="group rounded-xl border border-border bg-background p-8 hover:border-primary/40 transition-colors"
               >
-                <div className="flex items-baseline gap-3 mb-3">
-                  <span className="text-xs font-mono text-primary/40">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className="text-sm font-semibold text-foreground">
-                    {driver.driver}
-                  </h3>
-                </div>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  {driver.detail}
+                <span className="text-xs font-mono font-bold text-primary/40 mb-4 block">
+                  {driver.number}
+                </span>
+                <h3 className="text-lg font-semibold text-foreground mb-3">
+                  {driver.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {driver.description}
                 </p>
               </div>
             ))}
@@ -270,33 +333,38 @@ export default function CategoryPage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* ── Section 5: CTA ────────────────────────────────────────────────── */}
       <section className="py-24 lg:py-32">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="max-w-2xl">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-6">
-              Evaluate RFIS for your infrastructure.
-            </h2>
-            <p className="text-base text-muted-foreground leading-relaxed mb-10">
-              Whether you are an operator evaluating protection architecture, an
-              OEM designing lithium-chemistry products, or an agency establishing
-              standards — Naberstone can provide technical context aligned to
-              your engagement.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/contact"
-                className={cn(buttonVariants({ size: "lg" }), "glow-amber")}
-              >
-                Request Technical Overview
-              </Link>
-              <Link
-                href="/platform"
-                className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
-              >
-                Explore the Platform <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </div>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-6 max-w-3xl mx-auto">
+            Stop The Risk Before It Spreads.
+          </h2>
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-10">
+            Whether you are an operator evaluating protection architecture, an
+            OEM designing lithium-chemistry products, or an agency establishing
+            standards — Naberstone can provide technical context aligned to your
+            requirements.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/contact"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "border-primary text-primary hover:bg-primary/10"
+              )}
+            >
+              Request Technical Overview
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+            <Link
+              href="/contact?type=deployment"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "lg" })
+              )}
+            >
+              Schedule Deployment Discussion
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
