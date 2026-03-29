@@ -130,7 +130,7 @@ export function Navigation() {
                     <Link
                       href="/contact"
                       onClick={() => setMobileOpen(false)}
-                      className={cn(buttonVariants({ size: "sm" }), "w-full")}
+                      className={cn(buttonVariants({ size: "lg" }), "w-full")}
                     >
                       Request Technical Overview
                     </Link>
