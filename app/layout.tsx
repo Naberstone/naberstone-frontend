@@ -24,6 +24,19 @@ export const metadata: Metadata = {
   title: "Naberstone Safety Solutions | Reactive Fire Interruption Systems",
   description:
     "Naberstone builds Reactive Fire Interruption Systems (RFIS) — the interruption layer designed to stop thermal propagation before it becomes catastrophic across critical infrastructure.",
+  openGraph: {
+    title: "Naberstone Safety Solutions | Reactive Fire Interruption Systems",
+    description:
+      "Naberstone builds Reactive Fire Interruption Systems (RFIS) — the interruption layer designed to stop thermal propagation before it becomes catastrophic across critical infrastructure.",
+    siteName: "Naberstone Safety Solutions",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Naberstone Safety Solutions | Reactive Fire Interruption Systems",
+    description:
+      "Naberstone builds Reactive Fire Interruption Systems (RFIS) — the interruption layer designed to stop thermal propagation before it becomes catastrophic across critical infrastructure.",
+  },
 };
 
 export default function RootLayout({
