@@ -52,11 +52,11 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="block">
               <Image
-                src="/images/naberstone-logo-white.png"
+                src="/images/naberstone-tm-logo-white.png"
                 alt="Naberstone"
-                width={140}
-                height={18}
-                className="h-3.5 w-auto"
+                width={220}
+                height={33}
+                className="h-5 lg:h-7 w-auto"
               />
             </Link>
           </div>
