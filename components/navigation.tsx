@@ -55,9 +55,9 @@ export function Navigation() {
             <Image
               src="/images/naberstone-tm-logo-white.png"
               alt="Naberstone"
-              width={180}
-              height={27}
-              className="h-5 w-auto"
+              width={220}
+              height={33}
+              className="h-7 w-auto"
               priority
             />
           </Link>
@@ -108,9 +108,9 @@ export function Navigation() {
                       <Image
                         src="/images/naberstone-tm-logo-white.png"
                         alt="Naberstone"
-                        width={140}
-                        height={21}
-                        className="h-4 w-auto"
+                        width={180}
+                        height={27}
+                        className="h-5 w-auto"
                       />
                     </div>
                     <nav className="flex flex-col gap-0.5">
