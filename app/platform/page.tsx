@@ -249,7 +249,7 @@ export default function PlatformPage() {
 
                 {/* Description */}
                 <div className="lg:col-span-4">
-                  <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
+                  <p className="text-sm text-foreground leading-relaxed whitespace-pre-line">
                     {layer.description}
                   </p>
                 </div>
