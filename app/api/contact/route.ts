@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { getSupabase } from "@/lib/supabase";
 
 function getResend() {
   const apiKey = process.env.RESEND_API_KEY;
@@ -30,6 +31,24 @@ export async function POST(request: NextRequest) {
     const engagementLabel =
       engagementLabels[engagementType] || engagementType || "Not specified";
 
+    // Save to Supabase
+    const supabase = getSupabase();
+    const { error: dbError } = await supabase
+      .from("contact_submissions")
+      .insert({
+        engagement_type: engagementType || null,
+        name,
+        email,
+        organization: organization || null,
+        role: role || null,
+        message: message || null,
+      });
+
+    if (dbError) {
+      console.error("Supabase insert error:", dbError);
+    }
+
+    // Send email via Resend
     const resend = getResend();
     await resend.emails.send({
       from: "Naberstone Contact Form <noreply@naberstone.com>",
