@@ -107,9 +107,9 @@ export function Navigation() {
                     <Image
                       src="/images/naberstone-logo-white.png"
                       alt="Naberstone"
-                      width={180}
-                      height={24}
-                      className="h-5 w-auto"
+                      width={120}
+                      height={16}
+                      className="h-3.5 w-auto"
                     />
                   </div>
                   <nav className="flex flex-col gap-1 flex-1">
