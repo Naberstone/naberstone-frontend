@@ -57,7 +57,7 @@ export function Navigation() {
               alt="Naberstone"
               width={220}
               height={33}
-              className="h-7 w-auto"
+              className="h-5 lg:h-7 w-auto"
               priority
             />
           </Link>
