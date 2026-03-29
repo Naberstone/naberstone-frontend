@@ -31,21 +31,25 @@ export async function POST(request: NextRequest) {
     const engagementLabel =
       engagementLabels[engagementType] || engagementType || "Not specified";
 
-    // Save to Supabase
-    const supabase = getSupabase();
-    const { error: dbError } = await supabase
-      .from("contact_submissions")
-      .insert({
-        engagement_type: engagementType || null,
-        name,
-        email,
-        organization: organization || null,
-        role: role || null,
-        message: message || null,
-      });
+    // Save to Supabase (non-blocking — email still sends if this fails)
+    try {
+      const supabase = getSupabase();
+      const { error: dbError } = await supabase
+        .from("contact_submissions")
+        .insert({
+          engagement_type: engagementType || null,
+          name,
+          email,
+          organization: organization || null,
+          role: role || null,
+          message: message || null,
+        });
 
-    if (dbError) {
-      console.error("Supabase insert error:", dbError);
+      if (dbError) {
+        console.error("Supabase insert error:", dbError);
+      }
+    } catch (dbErr) {
+      console.error("Supabase connection error:", dbErr);
     }
 
     // Send email via Resend
