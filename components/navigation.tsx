@@ -53,7 +53,7 @@ export function Navigation() {
           {/* Logo */}
           <Link href="/" className="block">
             <Image
-              src="/images/naberstone-logo-white.png"
+              src="/images/naberstone-tm-logo-white.png"
               alt="Naberstone"
               width={140}
               height={18}
@@ -106,7 +106,7 @@ export function Navigation() {
                   <div>
                     <div className="mb-6">
                       <Image
-                        src="/images/naberstone-logo-white.png"
+                        src="/images/naberstone-tm-logo-white.png"
                         alt="Naberstone"
                         width={120}
                         height={16}
