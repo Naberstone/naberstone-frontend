@@ -100,31 +100,33 @@ export function Navigation() {
               >
                 <Menu className="h-5 w-5" />
               </SheetTrigger>
-              <SheetContent side="right" className="w-72 bg-card border-border px-8">
+              <SheetContent side="right" className="w-72 bg-card border-border px-6 !gap-0">
                 <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-                <div className="flex flex-col h-full pt-8">
-                  <div className="mb-8 px-3">
-                    <Image
-                      src="/images/naberstone-logo-white.png"
-                      alt="Naberstone"
-                      width={120}
-                      height={16}
-                      className="h-3.5 w-auto"
-                    />
+                <div className="flex flex-col justify-between h-full py-8 pb-[env(safe-area-inset-bottom,2rem)]">
+                  <div>
+                    <div className="mb-6">
+                      <Image
+                        src="/images/naberstone-logo-white.png"
+                        alt="Naberstone"
+                        width={120}
+                        height={16}
+                        className="h-3.5 w-auto"
+                      />
+                    </div>
+                    <nav className="flex flex-col gap-0.5">
+                      {navLinks.map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          onClick={() => setMobileOpen(false)}
+                          className="text-sm tracking-wider uppercase text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors py-2.5 rounded-md"
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                    </nav>
                   </div>
-                  <nav className="flex flex-col gap-1 flex-1">
-                    {navLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        onClick={() => setMobileOpen(false)}
-                        className="text-sm tracking-wider uppercase text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors px-3 py-3 rounded-md"
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </nav>
-                  <div className="pb-8">
+                  <div>
                     <Link
                       href="/contact"
                       onClick={() => setMobileOpen(false)}
