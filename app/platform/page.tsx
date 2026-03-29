@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { CheckCircle, ArrowRight } from "lucide-react";
+import { CheckCircle, ArrowRight, Server, Battery, Plane, Shield, Zap, Car } from "lucide-react";
 import { buttonVariants } from "@/lib/button-variants";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionLabel } from "@/components/shared/section-label";
@@ -29,8 +29,10 @@ interface PlatformOutcome {
 
 interface DeploymentApplication {
   image: string;
+  icon: React.ReactNode;
   title: string;
   description: string;
+  href: string;
 }
 
 // ── Content ─────────────────────────────────────────────────────────────────
@@ -40,7 +42,7 @@ const systemLayers: SystemLayer[] = [
     id: "01",
     title: "Sensing",
     description:
-      "Multi-modal early indicator detection across thermal, chemical, and electrical signal domains. RFIS sensing identifies the pre-failure signature — not the post-ignition event.",
+      "Detects early failure signals before ignition.\n\nMonitors heat, gas, and electrical changes across the system.",
     details: [
       "Thermal gradient monitoring across cell and module boundaries",
       "Off-gas precursor detection at sub-ignition concentrations",
@@ -51,42 +53,42 @@ const systemLayers: SystemLayer[] = [
     id: "02",
     title: "Decisioning",
     description:
-      "Classification and intervention logic that translates sensor signals into calibrated response — distinguishing normal variation from genuine propagation risk.",
+      "Classifies risk in real time.\n\nDetermines whether intervention is required and how to respond.",
     details: [
       "Multi-signal fusion for high-confidence failure classification",
       "Propagation trajectory modeling from real-time sensor state",
-      "Graduated response protocol with full audit documentation",
+      "Graduated response protocol — escalating from monitoring to intervention",
     ],
   },
   {
     id: "03",
     title: "Deployment",
     description:
-      "Targeted intervention into the active failure pathway — engaging at the chemistry layer to interrupt propagation before it becomes self-sustaining.",
+      "Targets the failure at its origin.\n\nInterrupts propagation before it becomes self-sustaining.",
     details: [
       "Precision deployment timed to the early propagation window",
-      "Chemistry-layer intervention targeting failure mechanism",
-      "Spatial targeting calibrated to event origin and trajectory",
+      "Chemistry-layer intervention targeting failure mechanism, not flame",
+      "Spatial targeting calibrated to the event origin and trajectory",
     ],
   },
   {
     id: "04",
     title: "Containment",
     description:
-      "Active management of the event boundary — protecting adjacent infrastructure, managing off-gas accumulation, and preventing secondary ignition.",
+      "Controls the event boundary.\n\nPrevents spread across adjacent systems and infrastructure.",
     details: [
       "Event boundary definition and monitoring throughout the incident",
       "Adjacent asset protection through isolation and targeted response",
-      "Off-gas management to reduce secondary ignition and toxicity",
+      "Off-gas management to reduce secondary ignition and toxicity exposure",
     ],
   },
   {
     id: "05",
     title: "Restoration",
     description:
-      "Structured recovery from a bounded, documented incident — enabling faster return to operations than uncontrolled cascade events.",
+      "Enables faster recovery.\n\nDocuments the event and restores operations with minimal downtime.",
     details: [
-      "Post-incident documentation for AHJ and insurance purposes",
+      "Post-incident documentation package for AHJ and insurance purposes",
       "Clearance assessment and re-commissioning support",
       "Incident data export for root cause and fleet learning",
     ],
@@ -96,54 +98,66 @@ const systemLayers: SystemLayer[] = [
 const platformOutcomes: PlatformOutcome[] = [
   {
     headline: "Prevents multi-system failure",
-    body: "RFIS intervention at the early propagation window prevents cell-to-cell cascade from establishing — containing the event to the smallest possible boundary before it reaches adjacent modules or racks.",
+    body: "A single battery event can cascade across infrastructure.\nRFIS contains it at the source.",
   },
   {
     headline: "Reduces downtime and recovery cost",
-    body: "A bounded, controlled event enables faster facility recovery, reduced contamination cleanup, and lower secondary damage — dramatically shortening the path back to full operational status.",
+    body: "Smaller events mean faster recovery.\nLess cleanup. Less disruption.",
   },
   {
     headline: "Lowers liability and insurance exposure",
-    body: "Every sensing event, decisioning action, and deployment is logged — creating auditable documentation for AHJ submissions, insurance underwriters, and post-incident regulatory review.",
+    body: "Documented, controlled events reduce uncertainty for insurers, regulators, and operators.",
   },
 ];
 
 const deploymentApplications: DeploymentApplication[] = [
   {
-    image: "/images/app-data-centers.jpg",
+    image: "/images/data-center.jpg",
+    icon: <Server className="h-5 w-5 text-primary" />,
     title: "Data Centers",
     description:
-      "Rack and room-level sensing and containment for UPS battery arrays and backup power infrastructure.",
+      "A single battery failure can cascade across rack-level and room-level infrastructure.",
+    href: "/applications#data-centers",
   },
   {
-    image: "/images/app-energy-storage.jpg",
+    image: "/images/saudi-bess.jpg",
+    icon: <Battery className="h-5 w-5 text-primary" />,
     title: "Energy Storage",
     description:
-      "Module-level RFIS integration within containerized battery energy storage systems (BESS).",
+      "Containerized battery systems can propagate cell-to-cell at utility scale.",
+    href: "/applications#energy-storage",
   },
   {
-    image: "/images/app-aviation.jpg",
+    image: "/images/aerospace.jpg",
+    icon: <Plane className="h-5 w-5 text-primary" />,
     title: "Aviation & Aerospace",
     description:
-      "Onboard and ground-support fire interruption for lithium-powered aviation platforms.",
+      "Lithium-based failures in confined systems require immediate interruption before escalation.",
+    href: "/applications#aviation-aerospace",
   },
   {
-    image: "/images/app-defense.jpg",
+    image: "/images/pentagon.jpg",
+    icon: <Shield className="h-5 w-5 text-primary" />,
     title: "Federal & Defense",
     description:
-      "Mission-aligned RFIS for defense and federal civilian lithium-chemistry infrastructure.",
+      "Mission-critical facilities require documented, bounded, and recoverable outcomes.",
+    href: "/applications#federal-defense",
   },
   {
-    image: "/images/app-charging.jpg",
+    image: "/images/charging-station.jpg",
+    icon: <Zap className="h-5 w-5 text-primary" />,
     title: "Charging Infrastructure",
     description:
-      "Bay-level protection for high-power EVSE installations and charging depots.",
+      "One vehicle event can cascade across adjacent charging bays in high-density environments.",
+    href: "/applications#charging-infrastructure",
   },
   {
-    image: "/images/app-ev.jpg",
+    image: "/images/ev-fleet.jpg",
+    icon: <Car className="h-5 w-5 text-primary" />,
     title: "EV Environments",
     description:
-      "Facility-level RFIS architecture for multi-vehicle electrified fleet and parking environments.",
+      "Parked vehicles in close proximity increase the risk of multi-asset propagation events.",
+    href: "/applications#ev-environments",
   },
 ];
 
@@ -174,27 +188,32 @@ export default function PlatformPage() {
                 Not A Product.
               </h1>
               <p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
-                Reactive Fire Interruption works across multiple layers —
-                sensing, decisioning, deployment, containment, and restoration —
-                to stop lithium-chemistry propagation before it cascades into
-                system-wide failure.
+                RFIS works across multiple layers — detecting early signals,
+                stopping spread, and containing the event before it escalates.
               </p>
             </div>
 
             {/* Right: Hero image */}
             <div className="relative">
-              <div className="relative aspect-[4/3] rounded-lg overflow-hidden border border-border">
+              <div className="relative overflow-hidden">
                 <Image
                   src="/images/hero-platform.jpg"
                   alt="RFIS residential edge system diagram showing Home Battery System, Detection Node, EV Charging, and Containment Zone"
-                  fill
-                  className="object-cover"
+                  width={800}
+                  height={600}
+                  className="w-full h-auto"
                   priority
                 />
+                {/* Radial gradient fade to black */}
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: "radial-gradient(ellipse at center, transparent 50%, #03050A 100%)",
+                  }}
+                />
+                {/* Dark overlay */}
+                <div className="absolute inset-0 pointer-events-none" style={{ backgroundColor: "rgba(3, 5, 10, 0.25)" }} />
               </div>
-              <p className="mt-4 text-xs tracking-[0.15em] uppercase text-muted-foreground text-center">
-                RFIS Scales Down To Residential Environments
-              </p>
             </div>
           </div>
         </div>
@@ -216,7 +235,7 @@ export default function PlatformPage() {
             {systemLayers.map((layer) => (
               <div
                 key={layer.id}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 py-10"
+                className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 py-10 items-start"
               >
                 {/* Number + Title */}
                 <div className="lg:col-span-3 flex items-baseline gap-4">
@@ -230,7 +249,7 @@ export default function PlatformPage() {
 
                 {/* Description */}
                 <div className="lg:col-span-4">
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
                     {layer.description}
                   </p>
                 </div>
@@ -255,7 +274,7 @@ export default function PlatformPage() {
       </section>
 
       {/* ── Section 3: Operating At The Chemistry Layer ───────────────────── */}
-      <section className="py-24 lg:py-32 bg-card border-y border-border">
+      <section className="py-24 lg:py-32 border-t border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionLabel>Mechanism</SectionLabel>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -287,12 +306,18 @@ export default function PlatformPage() {
 
             {/* Right: Image */}
             <div className="relative">
-              <div className="relative aspect-[4/3] rounded-lg overflow-hidden border border-border">
+              <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
                   src="/images/chemistry-detection.jpg"
                   alt="Early Signal Detection diagram showing Thermal Signature and RFIS Intervention points"
                   fill
                   className="object-cover"
+                />
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: "radial-gradient(ellipse at center, transparent 40%, hsl(var(--background)) 90%)",
+                  }}
                 />
               </div>
             </div>
@@ -301,7 +326,7 @@ export default function PlatformPage() {
       </section>
 
       {/* ── Section 4: Outcomes ──────────────────────────────────────────── */}
-      <section className="py-24 lg:py-32">
+      <section className="py-24 lg:py-32 border-t border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionLabel>Outcomes</SectionLabel>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground max-w-4xl mb-16 leading-[1.1]">
@@ -313,14 +338,15 @@ export default function PlatformPage() {
               <Card
                 key={i}
                 className="bg-card border-border hover:border-primary/50 transition-colors"
+                style={{ maxWidth: '390px' }}
               >
-                <CardContent className="p-8">
+                <CardContent className="p-8 h-full">
                   {/* Amber accent line */}
-                  <div className="h-1 w-12 bg-primary mb-8 rounded-full" />
-                  <h3 className="text-lg font-bold text-foreground mb-4">
+                  <div className="h-px w-8 bg-primary mb-8" />
+                  <h3 className="text-sm font-bold text-foreground mb-4">
                     {outcome.headline}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed whitespace-pre-line" style={{ fontSize: '13px' }}>
                     {outcome.body}
                   </p>
                 </CardContent>
@@ -331,46 +357,50 @@ export default function PlatformPage() {
       </section>
 
       {/* ── Section 5: Deployment Applications ───────────────────────────── */}
-      <section className="py-24 lg:py-32 bg-card border-y border-border">
+      <section className="py-24 lg:py-32 border-t border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionLabel>Deployment</SectionLabel>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground max-w-4xl mb-16 leading-[1.1]">
-            Built For Systems That Can&apos;t Afford To Fail
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground max-w-4xl mb-4 leading-[1.1]">
+            Built For Systems That Can&apos;t Afford To Fail.
           </h2>
+          <p className="text-base text-muted-foreground max-w-2xl mb-16 leading-relaxed">
+            Wherever energy is concentrated, one failure can cascade into
+            system-wide loss.
+          </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
             {deploymentApplications.map((app, i) => (
-              <div
+              <Link
                 key={i}
-                className="group rounded-lg overflow-hidden border border-border hover:border-primary/50 transition-colors bg-background"
+                href={app.href}
+                className="group relative rounded-xl overflow-hidden h-56 lg:h-64 block"
               >
-                {/* Photo */}
-                <div className="relative aspect-[16/10] overflow-hidden">
-                  <Image
-                    src={app.image}
-                    alt={app.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                {/* Content */}
-                <div className="p-6">
-                  <h3 className="text-base font-bold text-primary mb-2">
+                <Image
+                  src={app.image}
+                  alt={app.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+                <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                  <div className="mb-2">{app.icon}</div>
+                  <h3 className="text-base font-semibold text-white mb-1">
                     {app.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-xs text-white/70 leading-relaxed">
                     {app.description}
                   </p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
-          <div className="mt-12">
+          <div className="text-center">
             <Link
               href="/applications"
               className={cn(
-                buttonVariants({ variant: "outline", size: "lg" })
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "border-primary text-primary hover:bg-primary/10"
               )}
             >
               Explore Critical Use Cases
@@ -381,17 +411,15 @@ export default function PlatformPage() {
       </section>
 
       {/* ── Section 6: CTA ───────────────────────────────────────────────── */}
-      <section className="py-24 lg:py-32">
-        <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-6 leading-[1.1]">
+      <section className="py-24 lg:py-32 bg-black border-t border-border">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6 max-w-3xl">
             See How RFIS Stops Propagation — Before It Spreads.
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed mb-10 max-w-2xl mx-auto">
-            The Naberstone technical overview provides detailed system
-            architecture, mechanism description, and deployment context for
-            qualified operators, OEMs, and federal evaluators.
+          <p className="text-base md:text-lg text-white/70 max-w-2xl leading-relaxed mb-10">
+            Get a detailed breakdown of how RFIS detects early failure, stops propagation, and protects critical infrastructure.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row items-start gap-4">
             <Link
               href="/contact"
               className={cn(buttonVariants({ size: "lg" }), "glow-amber")}
@@ -402,7 +430,8 @@ export default function PlatformPage() {
             <Link
               href="/contact#integration"
               className={cn(
-                buttonVariants({ variant: "outline", size: "lg" })
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "border-white text-white hover:bg-white/10 bg-transparent"
               )}
             >
               Schedule Deployment Discussion

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 
 interface FooterColumn {
@@ -43,23 +44,21 @@ const footerColumns: FooterColumn[] = [
 
 export function Footer() {
   return (
-    <footer className="bg-card border-t border-border">
+    <footer className="bg-card border-t border-border pb-[env(safe-area-inset-bottom)]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Main footer content */}
         <div className="py-16 grid grid-cols-1 lg:grid-cols-5 gap-12">
           {/* Brand column */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex flex-col mb-4 group">
-              <span className="text-sm font-bold tracking-widest uppercase text-foreground group-hover:text-primary transition-colors">
-                NABERSTONE
-              </span>
-              <span className="text-[9px] tracking-[0.18em] uppercase text-muted-foreground leading-tight">
-                SAFETY SOLUTIONS
-              </span>
+            <Link href="/" className="block">
+              <Image
+                src="/images/naberstone-logo-white.png"
+                alt="Naberstone"
+                width={140}
+                height={18}
+                className="h-3.5 w-auto"
+              />
             </Link>
-            <p className="text-xs text-muted-foreground leading-relaxed mt-4">
-              Reactive Fire Interruption Systems.
-            </p>
           </div>
 
           {/* Nav columns */}
@@ -91,7 +90,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} Naberstone Safety Solutions. All rights reserved.
+            &copy; {new Date().getFullYear()} Naberstone. All rights reserved.
           </p>
           <p className="text-xs text-muted-foreground/60 tracking-wider">
             Built for the electrified era.

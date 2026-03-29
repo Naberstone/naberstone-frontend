@@ -23,6 +23,7 @@ export const metadata: Metadata = {
 // ─── Sector data ────────────────────────────────────────────────────────────
 
 interface Sector {
+  id: string;
   icon: React.ReactNode;
   name: string;
   boldSubhead: string;
@@ -39,79 +40,85 @@ interface Sector {
 
 const sectors: Sector[] = [
   {
+    id: "data-centers",
     icon: <Server className="h-6 w-6 text-primary" />,
     name: "Data Centers",
     boldSubhead: "Hyperscale Outages Can Exceed $5M\u2013$9M Per Hour.",
-    body: "A single UPS battery module thermal event can cascade across rack-level or room-level battery systems. Off-gas accumulation in enclosed battery rooms reaches flammability thresholds rapidly. RFIS interrupts the propagation pathway at the module boundary \u2014 containing the event before it reaches adjacent modules or enters the battery room atmosphere.",
+    body: "Downtime isn\u2019t just disruption \u2014 it\u2019s lost revenue in real time.\n\nWhen one cell fails, heat spreads rack-to-rack \u2014 triggering outages, damaging equipment, and escalating into facility-wide downtime.\n\nRFIS stops the reaction at the source \u2014 preventing cascade, reducing downtime, and protecting revenue, assets, and insurable risk.",
     ctaLabel: "See RFIS in Data Centers",
     ctaHref: "/contact",
-    image: "/images/app-data-centers.jpg",
+    image: "/images/cutaway-installation-view.jpg",
     imageAlt:
       "Data center RFIS deployment showing detection node and containment boundary",
     imageLabels: ["DETECTION NODE", "CONTAINMENT BOUNDARY"],
     imageLeft: false,
   },
   {
+    id: "energy-storage",
     icon: <Battery className="h-6 w-6 text-primary" />,
     name: "Energy Storage Systems",
     boldSubhead: "One Failure Can Wipe Out An Entire ESS Site.",
-    body: "Cell-to-cell and module-to-module thermal propagation within containerized BESS can escalate to container-level events. RFIS addresses the propagation mechanism within the container and across module boundaries. Early indicator sensing enables intervention before runaway establishes.",
+    body: "Grid-scale systems concentrate massive amounts of energy in a single location.\n\nWhen one cell fails, events spread across modules \u2014 destroying assets, triggering shutdowns, and forcing extended downtime.\n\nRFIS stops the reaction early \u2014 preventing sitewide loss, reducing downtime, and protecting insurable value.",
     ctaLabel: "View ESS Protection Model",
     ctaHref: "/contact",
-    image: "/images/app-energy-storage.jpg",
+    image: "/images/rfis-bess.jpg",
     imageAlt:
       "Comparison of uncontrolled propagation versus RFIS interruption in energy storage",
     imageLabels: ["UNCONTROLLED PROPAGATION", "RFIS INTERRUPTION"],
     imageLeft: true,
   },
   {
+    id: "aviation-aerospace",
     icon: <Plane className="h-6 w-6 text-primary" />,
     name: "Aviation & Aerospace",
     boldSubhead: "One Battery Failure Can Ground An Entire Aircraft.",
-    body: "Aviation environments have near-zero tolerance for uncontrolled thermal events. Suppression systems are inadequate for self-oxidizing lithium chemistry failure. RFIS provides the early intervention and chemistry-layer response that aviation-grade safety requirements demand.",
+    body: "Lithium systems are embedded in aircraft and mission-critical equipment.\n\nWhen failure occurs, there is no room for spread \u2014 a single event can force groundings, delays, and regulatory consequences.\n\nRFIS intervenes before escalation \u2014 protecting operations, reducing risk exposure, and enabling certifiable safety performance.",
     ctaLabel: "See Aviation Integration",
     ctaHref: "/contact",
-    image: "/images/app-aviation.jpg",
+    image: "/images/rfis-aviation.jpg",
     imageAlt:
       "Aviation battery propagation versus containment comparison",
     imageLabels: ["PROPAGATION", "CONTAINMENT"],
     imageLeft: false,
   },
   {
+    id: "federal-defense",
     icon: <Shield className="h-6 w-6 text-primary" />,
     name: "Federal & Defense",
     boldSubhead: "One Failure Can Compromise Mission-Critical Systems.",
-    body: "The Department of Defense and federal civilian agencies are deploying lithium-chemistry energy systems across platforms, facilities, and forward operating environments. Naberstone provides federal-pathway engagement, validated performance evidence, and RFIS system architecture aligned to defense and federal civilian requirements.",
+    body: "Electrification is moving into high-risk, mission-critical environments.\n\nWhen systems fail without containment, assets are lost, operations are disrupted, and compliance risk increases.\n\nRFIS delivers controlled, documented containment \u2014 protecting mission continuity and meeting federal performance requirements.",
     ctaLabel: "View RFIS Defense",
     ctaHref: "/contact",
-    image: "/images/app-defense.jpg",
+    image: "/images/app-defense-v2.png",
     imageAlt:
       "RFIS defense application across weapon military installation and tactical system power grid",
     imageLabels: [
-      "WEAPON MILITARY INSTALLATION",
-      "TACTICAL SYSTEM POWER/GRID SYSTEM",
+      "SECURE MILITARY INSTALLATION",
+      "TACTICAL SYSTEM VISUALIZATION",
     ],
     imageLeft: true,
   },
   {
+    id: "charging-infrastructure",
     icon: <Zap className="h-6 w-6 text-primary" />,
     name: "Charging Infrastructure",
     boldSubhead: "One Vehicle Failure Can Shut Down An Entire Site.",
-    body: "High-power electric vehicle charging infrastructure is now deployed in shared environments \u2014 parking structures, commercial centers, highway corridors. RFIS provides bay-level sensing and response capability for EVSE installations, enabling rapid detection and intervention at the vehicle-charger interface before events can propagate.",
+    body: "High-power charging environments concentrate vehicles, energy, and public exposure.\n\nWhen a single vehicle fails, events spread across bays \u2014 forcing shutdowns, damaging infrastructure, and increasing liability.\n\nRFIS stops propagation at the source \u2014 keeping stations operational and reducing repair, downtime, and insurance exposure.",
     ctaLabel: "See Charging Integration",
     ctaHref: "/contact",
-    image: "/images/app-charging.jpg",
+    image: "/images/rfis-ev-charging-infra.jpg",
     imageAlt: "RFIS integration with EV charging infrastructure",
     imageLeft: false,
   },
   {
+    id: "ev-environments",
     icon: <Car className="h-6 w-6 text-primary" />,
     name: "EV Environments",
     boldSubhead: "One EV Fire Can Destroy An Entire Facility.",
-    body: "Multi-tenant parking structures, commercial fleets, and shared mobility operations now store and charge significant numbers of electric vehicles in enclosed environments. RFIS for EV environments provides sensing architecture across parking levels, targeted early intervention, and the documentation evidence that operators and insurers require.",
+    body: "Shared EV environments concentrate vehicles in confined spaces.\n\nWhen failure occurs, fires spread across vehicles and infrastructure \u2014 leading to costly repairs, downtime, and insurance claims.\n\nRFIS contains the event early \u2014 minimizing damage, reducing losses, and keeping facilities operational.",
     ctaLabel: "View RFIS for EV Environments",
     ctaHref: "/contact",
-    image: "/images/app-ev.jpg",
+    image: "/images/maritime-shipping-freight.jpg",
     imageAlt: "RFIS protection for EV parking and fleet environments",
     imageLeft: true,
   },
@@ -124,48 +131,16 @@ export default function ApplicationsPage() {
     <>
       {/* ── Hero ──────────────────────────────────────────────────────── */}
       <section className="relative pt-32 pb-24 lg:pb-32 overflow-hidden bg-background">
-        {/* Subtle amber radial glow */}
-        <div
-          className="absolute bottom-0 right-0 w-[600px] h-[500px] pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse at bottom right, oklch(0.72 0.175 48 / 0.06) 0%, transparent 70%)",
-          }}
-        />
-
-        {/* Isometric wireframe decorative element */}
-        <div className="absolute top-16 right-0 w-[480px] h-[400px] pointer-events-none opacity-[0.07] hidden lg:block">
-          <svg
-            viewBox="0 0 480 400"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-full"
-          >
-            {/* Isometric 3D wireframe grid */}
-            <line x1="120" y1="60" x2="240" y2="120" stroke="currentColor" strokeWidth="1" className="text-primary" />
-            <line x1="360" y1="60" x2="240" y2="120" stroke="currentColor" strokeWidth="1" className="text-primary" />
-            <line x1="240" y1="120" x2="240" y2="220" stroke="currentColor" strokeWidth="1" className="text-primary" />
-            <line x1="120" y1="60" x2="120" y2="160" stroke="currentColor" strokeWidth="1" className="text-primary" />
-            <line x1="360" y1="60" x2="360" y2="160" stroke="currentColor" strokeWidth="1" className="text-primary" />
-            <line x1="120" y1="160" x2="240" y2="220" stroke="currentColor" strokeWidth="1" className="text-primary" />
-            <line x1="360" y1="160" x2="240" y2="220" stroke="currentColor" strokeWidth="1" className="text-primary" />
-            {/* Second cube layer */}
-            <line x1="180" y1="140" x2="300" y2="200" stroke="currentColor" strokeWidth="0.75" className="text-primary" />
-            <line x1="420" y1="140" x2="300" y2="200" stroke="currentColor" strokeWidth="0.75" className="text-primary" />
-            <line x1="300" y1="200" x2="300" y2="300" stroke="currentColor" strokeWidth="0.75" className="text-primary" />
-            <line x1="180" y1="140" x2="180" y2="240" stroke="currentColor" strokeWidth="0.75" className="text-primary" />
-            <line x1="420" y1="140" x2="420" y2="240" stroke="currentColor" strokeWidth="0.75" className="text-primary" />
-            <line x1="180" y1="240" x2="300" y2="300" stroke="currentColor" strokeWidth="0.75" className="text-primary" />
-            <line x1="420" y1="240" x2="300" y2="300" stroke="currentColor" strokeWidth="0.75" className="text-primary" />
-            {/* Third cube layer */}
-            <line x1="60" y1="180" x2="180" y2="240" stroke="currentColor" strokeWidth="0.5" className="text-primary" />
-            <line x1="300" y1="180" x2="180" y2="240" stroke="currentColor" strokeWidth="0.5" className="text-primary" />
-            <line x1="180" y1="240" x2="180" y2="340" stroke="currentColor" strokeWidth="0.5" className="text-primary" />
-            <line x1="60" y1="180" x2="60" y2="280" stroke="currentColor" strokeWidth="0.5" className="text-primary" />
-            <line x1="300" y1="180" x2="300" y2="280" stroke="currentColor" strokeWidth="0.5" className="text-primary" />
-            <line x1="60" y1="280" x2="180" y2="340" stroke="currentColor" strokeWidth="0.5" className="text-primary" />
-            <line x1="300" y1="280" x2="180" y2="340" stroke="currentColor" strokeWidth="0.5" className="text-primary" />
-          </svg>
+        {/* Background architecture diagram */}
+        <div className="absolute inset-0 pointer-events-none">
+          <Image
+            src="/images/cell-system-flow-v3.jpg"
+            alt=""
+            fill
+            className="object-cover object-center"
+            aria-hidden="true"
+          />
+          <div className="absolute inset-0 bg-black/50" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
@@ -173,12 +148,11 @@ export default function ApplicationsPage() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground max-w-4xl leading-[1.05] mb-8">
             Built For High-Consequence Infrastructure.
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed mb-4">
-            RFIS prevents propagation at the chemistry layer — before fire
-            starts, before suppression fails, before the event becomes
-            unrecoverable.
+          <p className="text-lg text-white max-w-2xl leading-relaxed mb-4">
+            When energy is concentrated at scale, failure doesn&rsquo;t stay local. RFIS prevents
+            propagation that leads to downtime, asset loss, and operational disruption.
           </p>
-          <p className="text-base text-foreground/80 font-medium max-w-2xl">
+          <p className="text-base text-white font-medium max-w-2xl">
             Data centers. Grid storage. EV infrastructure. Defense systems.
           </p>
         </div>
@@ -192,8 +166,9 @@ export default function ApplicationsPage() {
           return (
             <div
               key={sector.name}
+              id={sector.id}
               className={cn(
-                "py-24 lg:py-32 border-b border-border",
+                "py-24 lg:py-32 border-b border-border scroll-mt-20",
                 i % 2 !== 0 && "bg-card"
               )}
             >
@@ -205,7 +180,7 @@ export default function ApplicationsPage() {
                   )}
                 >
                   {/* ── Text column ── */}
-                  <div className="flex flex-col justify-center">
+                  <div className={cn("order-2 lg:order-none flex flex-col justify-center", isImageLeft && "items-end text-right")}>
                     <div className="flex items-center gap-3 mb-6">
                       {sector.icon}
                       <h2 className="text-2xl md:text-3xl font-bold text-foreground">
@@ -213,11 +188,11 @@ export default function ApplicationsPage() {
                       </h2>
                     </div>
 
-                    <p className="text-xl md:text-2xl font-bold text-foreground mb-6 leading-snug">
+                    <p className="text-lg font-bold text-foreground mb-6 leading-snug">
                       {sector.boldSubhead}
                     </p>
 
-                    <p className="text-base text-muted-foreground leading-relaxed mb-8">
+                    <p className="text-base text-white leading-relaxed mb-8 whitespace-pre-line">
                       {sector.body}
                     </p>
 
@@ -225,41 +200,35 @@ export default function ApplicationsPage() {
                       <Link
                         href={sector.ctaHref}
                         className={cn(
-                          buttonVariants({ variant: "outline", size: "lg" }),
-                          "gap-2"
+                          isImageLeft
+                            ? cn(buttonVariants({ size: "lg" }))
+                            : cn(buttonVariants({ variant: "outline", size: "lg" }), "gap-2 border-primary text-primary hover:bg-primary/10")
                         )}
                       >
                         {sector.ctaLabel}
-                        <ArrowRight className="h-4 w-4" />
+                        {!isImageLeft && <ArrowRight className="h-4 w-4" />}
                       </Link>
                     </div>
                   </div>
 
                   {/* ── Image column ── */}
-                  <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-border bg-card">
-                    <Image
-                      src={sector.image}
-                      alt={sector.imageAlt}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                    />
-
-                    {/* Image overlay labels */}
-                    {sector.imageLabels && sector.imageLabels.length > 0 && (
-                      <div className="absolute inset-0 flex flex-col justify-end p-4 gap-2 pointer-events-none">
-                        <div className="flex flex-wrap gap-2">
-                          {sector.imageLabels.map((label) => (
-                            <span
-                              key={label}
-                              className="inline-flex items-center rounded bg-background/80 backdrop-blur-sm border border-primary/30 px-3 py-1 text-[10px] font-semibold tracking-[0.15em] uppercase text-primary"
-                            >
-                              {label}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
+                  <div className="order-1 lg:order-none relative">
+                    {!isImageLeft && (
+                      <div className="absolute -inset-2 rounded-xl bg-primary/35 blur-lg" />
                     )}
+                    <div className={cn(
+                      "relative rounded-xl overflow-hidden bg-black",
+                      isImageLeft && "border-2 border-primary"
+                    )}>
+                      <Image
+                        src={sector.image}
+                        alt={sector.imageAlt}
+                        width={800}
+                        height={600}
+                        className="w-full h-auto"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -269,41 +238,37 @@ export default function ApplicationsPage() {
       </section>
 
       {/* ── CTA ───────────────────────────────────────────────────────── */}
-      <section className="relative py-24 lg:py-32 overflow-hidden">
+      <section className="relative overflow-hidden py-24 lg:py-0 lg:h-[450px]">
         {/* Background image */}
         <div className="absolute inset-0">
           <Image
-            src="/images/app-data-centers.jpg"
+            src="/images/ev-fleet-fire.jpg"
             alt=""
             fill
             className="object-cover"
             sizes="100vw"
             aria-hidden="true"
           />
-          <div className="absolute inset-0 bg-background/85 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-black/60" />
         </div>
 
-        {/* Amber glow accent */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse at center bottom, oklch(0.72 0.175 48 / 0.08) 0%, transparent 60%)",
-          }}
-        />
-
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-6 leading-tight">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 flex items-center h-full">
+          <div className="max-w-3xl">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-8 leading-tight">
               Protect What Your Infrastructure Can&apos;t Afford To Lose.
             </h2>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-10 max-w-2xl mx-auto">
-              RFIS deployment is calibrated to the specific asset class,
-              facility type, and regulatory environment of each engagement.
-              Naberstone works with operators and OEMs to define the right
-              architecture before deployment begins.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="space-y-4 mb-10">
+              <p className="text-base text-white/80 leading-relaxed">
+                Every system fails differently — but the cost of failure is always high
+              </p>
+              <p className="text-base text-white/80 leading-relaxed">
+                RFIS is engineered around your infrastructure, your risk exposure, and your downtime cost
+              </p>
+              <p className="text-base text-white/80 leading-relaxed">
+                Deployment is defined before failure happens — so it never becomes a cascade event
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row items-start gap-4">
               <Link
                 href="/contact"
                 className={cn(buttonVariants({ size: "lg" }), "glow-amber")}
@@ -314,10 +279,10 @@ export default function ApplicationsPage() {
                 href="/contact#integration"
                 className={cn(
                   buttonVariants({ variant: "outline", size: "lg" }),
-                  "gap-2"
+                  "gap-2 border-white text-white hover:bg-white/10 bg-transparent"
                 )}
               >
-                Discuss Deployment & Integration
+                Schedule Deployment Discussion
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>

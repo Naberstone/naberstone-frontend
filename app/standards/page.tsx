@@ -102,7 +102,7 @@ export default function StandardsPage() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-[85vh] flex items-center overflow-hidden">
+      <section className="relative pt-32 pb-16 lg:pb-20 overflow-hidden">
         {/* Background image */}
         <Image
           src="/images/hero-standards.jpg"
@@ -114,19 +114,19 @@ export default function StandardsPage() {
         {/* Dark overlay for readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/65 to-black/40" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
           <SectionLabel>Standards &amp; Validation</SectionLabel>
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white max-w-4xl leading-[1.08] mb-6">
             The Regulatory Landscape Is Shifting.
           </h1>
 
-          <p className="text-lg md:text-xl font-semibold text-white/90 max-w-3xl leading-snug mb-4">
+          <p className="text-lg md:text-xl font-semibold text-white max-w-3xl leading-snug mb-8">
             Systems That Can&apos;t Demonstrate Controlled Failure Behavior Are
             No Longer Approved.
           </p>
 
-          <p className="text-base md:text-lg text-white/70 max-w-2xl leading-relaxed mb-10">
+          <p className="text-base text-white max-w-2xl leading-relaxed mb-10">
             UL 9540A, NFPA 855, and AHJ performance-based submissions are
             establishing a compliance environment that legacy suppression systems
             cannot satisfy. RFIS is designed for this environment.
@@ -138,13 +138,12 @@ export default function StandardsPage() {
               className={cn(buttonVariants({ size: "lg" }), "glow-amber")}
             >
               Request Technical Overview
-              <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
             <Link
               href="/contact#deployment"
               className={cn(
                 buttonVariants({ variant: "outline", size: "lg" }),
-                "border-white/30 text-white hover:bg-white/10 hover:text-white"
+                "border-white text-white hover:bg-white/10 hover:text-white bg-transparent"
               )}
             >
               Schedule Deployment Discussion
@@ -238,19 +237,12 @@ export default function StandardsPage() {
                 — not just at commissioning, but throughout the system
                 lifecycle.
               </p>
-              <p className="text-base text-muted-foreground leading-relaxed mb-10">
+              <p className="text-base text-muted-foreground leading-relaxed">
                 Qualified operators and agencies can request access to the
                 Naberstone Validation Library — including test methodology
                 summaries, propagation containment evidence, and AHJ
                 submission templates.
               </p>
-              <Link
-                href="/contact#overview"
-                className={cn(buttonVariants({ size: "lg" }), "glow-amber")}
-              >
-                Request Validation Library Access
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
             </div>
 
             {/* Right column — validation items */}

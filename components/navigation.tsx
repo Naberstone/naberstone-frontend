@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
@@ -24,7 +25,6 @@ const navLinks: NavLink[] = [
   { label: "Applications", href: "/applications" },
   { label: "Standards", href: "/standards" },
   { label: "Partnerships", href: "/partnerships" },
-  { label: "Shop", href: "/shop" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -51,13 +51,15 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex flex-col group">
-            <span className="text-sm font-bold tracking-widest uppercase text-foreground group-hover:text-primary transition-colors">
-              NABERSTONE
-            </span>
-            <span className="text-[9px] tracking-[0.18em] uppercase text-muted-foreground leading-tight">
-              SAFETY SOLUTIONS
-            </span>
+          <Link href="/" className="block">
+            <Image
+              src="/images/naberstone-logo-white.png"
+              alt="Naberstone"
+              width={140}
+              height={18}
+              className="h-3.5 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop nav */}
@@ -66,7 +68,7 @@ export function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-xs tracking-wider uppercase text-muted-foreground hover:text-foreground transition-colors"
+                className="text-xs tracking-wider uppercase text-white hover:text-primary transition-colors"
               >
                 {link.label}
               </Link>
@@ -101,13 +103,14 @@ export function Navigation() {
               <SheetContent side="right" className="w-72 bg-card border-border">
                 <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                 <div className="flex flex-col h-full pt-8">
-                  <div className="flex flex-col mb-8">
-                    <span className="text-sm font-bold tracking-widest uppercase text-foreground">
-                      NABERSTONE
-                    </span>
-                    <span className="text-[9px] tracking-[0.18em] uppercase text-muted-foreground leading-tight">
-                      SAFETY SOLUTIONS
-                    </span>
+                  <div className="mb-8">
+                    <Image
+                      src="/images/naberstone-logo-white.png"
+                      alt="Naberstone"
+                      width={180}
+                      height={24}
+                      className="h-5 w-auto"
+                    />
                   </div>
                   <nav className="flex flex-col gap-1 flex-1">
                     {navLinks.map((link) => (

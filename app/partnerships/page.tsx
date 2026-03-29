@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, Building2, Settings, Shield } from "lucide-react";
 import { buttonVariants } from "@/lib/button-variants";
 import { SectionLabel } from "@/components/shared/section-label";
 import { cn } from "@/lib/utils";
@@ -14,28 +14,65 @@ export const metadata: Metadata = {
 
 // ─── Content ─────────────────────────────────────────────────────────────────
 
-const facilityBenefits = [
-  "Propagation risk assessment across battery and electrified asset classes",
-  "Sensing architecture design calibrated to facility layout and threat profile",
-  "Intervention and containment strategy aligned to operational requirements",
-  "Full AHJ documentation package for permitting and compliance submissions",
-  "Lifecycle monitoring and maintenance framework from day one",
+const facilitySteps = [
+  {
+    number: "01",
+    title: "Infrastructure Evaluation",
+    description:
+      "We assess your facility, risk exposure, and regulatory requirements — defining how RFIS fits into your system.",
+  },
+  {
+    number: "02",
+    title: "System Specification",
+    description:
+      "We design the sensing, decision, and deployment architecture tailored to your environment.",
+  },
+  {
+    number: "03",
+    title: "Validation & Approval",
+    description:
+      "We generate the test data, documentation, and AHJ submissions required for approval and insurance.",
+  },
+  {
+    number: "04",
+    title: "Deployment & Support",
+    description:
+      "We deploy, train operators, and support the system through its full lifecycle.",
+  },
 ];
 
-const oemBenefits = [
-  "Design-stage integration of RFIS sensing and intervention capability",
-  "Product-level propagation containment validated through UL 9540A methodology",
-  "Embedded documentation and compliance architecture for downstream AHJ approval",
-  "Co-engineering engagement with Naberstone's systems and chemistry team",
-  "Scalable deployment model from prototype through volume production",
+const oemSteps = [
+  {
+    number: "01",
+    title: "Design Integration",
+    description:
+      "We identify where RFIS fits into your system architecture.",
+  },
+  {
+    number: "02",
+    title: "System Co-Development",
+    description:
+      "We embed RFIS into your product — tailored to chemistry, form factor, and use case.",
+  },
+  {
+    number: "03",
+    title: "Validation & Certification",
+    description:
+      "We generate the test data required for UL, NFPA, and AHJ approval.",
+  },
+  {
+    number: "04",
+    title: "Commercial Scale",
+    description:
+      "We support licensing, manufacturing, and deployment at volume.",
+  },
 ];
 
-const federalCapabilities = [
-  "Procurement-aligned engagement for defense and federal civilian programs",
-  "Validated performance evidence meeting federal documentation requirements",
-  "Classified and sensitive program engagement through appropriate channels",
-  "RFIS system architecture aligned to DoD and federal installation standards",
-  "Lifecycle documentation and audit trail for federal compliance frameworks",
+const programContexts = [
+  "Department of Defense — platform and facility programs",
+  "Intelligence community — secure facility and remote power applications",
+  "DHS and federal civilian — critical infrastructure protection programs",
+  "Department of Energy — grid storage and research facility applications",
 ];
 
 // ─── Page ────────────────────────────────────────────────────────────────────
@@ -44,30 +81,27 @@ export default function PartnershipsPage() {
   return (
     <>
       {/* ── Hero ────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-[80vh] flex items-center overflow-hidden">
+      <section className="relative pt-32 pb-16 lg:pb-20 overflow-hidden">
         <Image
-          src="/images/hero-partnerships-oem.jpg"
+          src="/images/business-meeting.jpg"
           alt="Industrial facility and laboratory environment representing RFIS deployment pathways"
           fill
           priority
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/65 to-black/40" />
+        <div className="absolute inset-0 bg-black/60" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32">
-          <SectionLabel>Deployment Pathways</SectionLabel>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+          <SectionLabel>Partnerships</SectionLabel>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white max-w-4xl leading-[1.08] mb-6">
             Two Paths To Deployment. One Outcome.
           </h1>
-          <p className="text-lg md:text-xl text-white/80 max-w-3xl leading-relaxed mb-6">
-            RFIS deploys at the operator level and at the OEM level — providing
-            propagation protection whether you manage electrified infrastructure
-            or build it.
+          <p className="text-base text-white max-w-3xl leading-relaxed mb-4">
+            RFIS integrates at the operator level and the OEM level — enabling
+            deployment across existing infrastructure and new system design
           </p>
-          <p className="text-base text-white/60 max-w-2xl leading-relaxed">
-            OEM partners embed RFIS into products and platforms.
-            <br />
-            Operators deploy RFIS across facilities and infrastructure.
+          <p className="text-base text-white max-w-2xl leading-relaxed">
+            Both pathways deliver the same outcome: controlled failure, no spread
           </p>
         </div>
       </section>
@@ -75,47 +109,55 @@ export default function PartnershipsPage() {
       {/* ── Deploy RFIS Into Your Facility ──────────────────────────────── */}
       <section className="py-24 lg:py-32 border-t border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Image */}
-            <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-border">
-              <Image
-                src="/images/data-center.jpg"
-                alt="Data center facility with battery infrastructure requiring RFIS deployment"
-                fill
-                className="object-cover"
-              />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+            {/* Left — title + image */}
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <Building2 className="h-6 w-6 text-primary" />
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+                  Deploy RFIS Into Your Facility
+                </h2>
+              </div>
+              <div className="relative rounded-xl overflow-hidden">
+                <Image
+                  src="/images/lucid-motors-assembly-line.jpg"
+                  alt="Data center facility with battery infrastructure requiring RFIS deployment"
+                  width={800}
+                  height={500}
+                  className="w-full h-auto"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
             </div>
 
-            {/* Content */}
+            {/* Right — engagement process */}
             <div>
-              <SectionLabel>Operator Deployment</SectionLabel>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-6 leading-[1.1]">
-                Deploy RFIS Into Your Facility
-              </h2>
-              <p className="text-base text-muted-foreground leading-relaxed mb-8">
-                For operators managing lithium-chemistry risk across data
-                centers, energy storage installations, EV infrastructure, and
-                critical facilities — Naberstone provides a structured
-                assessment-to-deployment pathway.
+              <p className="text-xs font-semibold tracking-[0.15em] uppercase text-muted-foreground mb-8">
+                Engagement Process
               </p>
-
-              <ul className="space-y-4 mb-10">
-                {facilityBenefits.map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-muted-foreground leading-relaxed">
-                      {item}
+              <div className="space-y-6 mb-8">
+                {facilitySteps.map((step) => (
+                  <div key={step.number} className="flex items-start gap-4">
+                    <span className="h-8 w-8 rounded-full border border-primary flex items-center justify-center flex-shrink-0 text-xs font-bold font-mono text-primary">
+                      {step.number}
                     </span>
-                  </li>
+                    <div>
+                      <h3 className="text-sm font-semibold text-foreground mb-1">
+                        {step.title}
+                      </h3>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
                 ))}
-              </ul>
-
+              </div>
               <Link
                 href="/contact"
-                className={cn(buttonVariants({ size: "lg" }), "glow-amber")}
+                className={cn(buttonVariants({ size: "lg" }), "w-full justify-center gap-2")}
               >
-                Schedule Facility Assessment
-                <ArrowRight className="ml-2 h-4 w-4" />
+                Schedule Infrastructure Assessment
+                <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>
@@ -123,95 +165,117 @@ export default function PartnershipsPage() {
       </section>
 
       {/* ── Embed RFIS Into Your Product ────────────────────────────────── */}
-      <section className="py-24 lg:py-32 bg-card border-y border-border">
+      <section className="py-24 lg:py-32 border-t border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Content (left on desktop) */}
-            <div className="order-2 lg:order-1">
-              <SectionLabel>OEM Integration</SectionLabel>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-6 leading-[1.1]">
-                Embed RFIS Into Your Product
-              </h2>
-              <p className="text-base text-muted-foreground leading-relaxed mb-8">
-                For OEMs building battery systems, energy storage products, EV
-                charging platforms, or electrified infrastructure — Naberstone
-                provides a co-engineering pathway to embed RFIS at the product
-                level.
-              </p>
-
-              <ul className="space-y-4 mb-10">
-                {oemBenefits.map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-muted-foreground leading-relaxed">
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              <Link
-                href="/contact#integration"
-                className={cn(buttonVariants({ size: "lg" }), "glow-amber")}
-              >
-                Request Integration Discussion
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+            {/* Left — title + image */}
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <Settings className="h-6 w-6 text-primary" />
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+                  Embed RFIS Into Your Product
+                </h2>
+              </div>
+              <div className="relative rounded-xl overflow-hidden">
+                <Image
+                  src="/images/rfis-ds1.jpg"
+                  alt="RFIS product integration within commercial battery and energy storage systems"
+                  width={800}
+                  height={500}
+                  className="w-full h-auto"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
             </div>
 
-            {/* Image (right on desktop) */}
-            <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-border order-1 lg:order-2">
-              <Image
-                src="/images/rfis-commercial.jpg"
-                alt="RFIS product integration within commercial battery and energy storage systems"
-                fill
-                className="object-cover"
-              />
+            {/* Right — engagement process */}
+            <div>
+              <p className="text-xs font-semibold tracking-[0.15em] uppercase text-muted-foreground mb-8">
+                Engagement Process
+              </p>
+              <div className="space-y-6 mb-8">
+                {oemSteps.map((step) => (
+                  <div key={step.number} className="flex items-start gap-4">
+                    <span className="h-8 w-8 rounded-full border border-primary flex items-center justify-center flex-shrink-0 text-xs font-bold font-mono text-primary">
+                      {step.number}
+                    </span>
+                    <div>
+                      <h3 className="text-sm font-semibold text-foreground mb-1">
+                        {step.title}
+                      </h3>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <Link
+                href="/contact#integration"
+                className={cn(buttonVariants({ size: "lg" }), "w-full justify-center gap-2")}
+              >
+                Start OEM Integration Discussion
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
       {/* ── Federal & Mission-Critical ──────────────────────────────────── */}
-      <section className="py-24 lg:py-32" id="federal">
+      <section className="py-24 lg:py-32 border-t border-border" id="federal">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="max-w-4xl">
-            <SectionLabel>Federal Pathways</SectionLabel>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-6 leading-[1.1]">
-              RFIS For Mission-Critical Infrastructure
-            </h2>
-            <p className="text-base text-muted-foreground leading-relaxed mb-4">
-              The Department of Defense and federal civilian agencies are
-              deploying lithium-chemistry energy systems across platforms,
-              facilities, and forward operating environments.
-            </p>
-            <p className="text-base text-muted-foreground leading-relaxed mb-10">
-              Naberstone provides federal-pathway engagement, validated
-              performance evidence, and RFIS system architecture aligned to
-              defense and federal civilian requirements.
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 mb-10">
-              {federalCapabilities.map((item, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground leading-relaxed">
-                    {item}
-                  </span>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+            {/* Left — content */}
+            <div className="contents lg:block">
+              <div className="order-1 lg:order-none">
+                <SectionLabel>Federal Pathways</SectionLabel>
+                <div className="flex items-center gap-3 mb-6">
+                  <Shield className="h-6 w-6 text-primary" />
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+                    RFIS For Mission-Critical Infrastructure
+                  </h2>
                 </div>
-              ))}
+                <p className="text-base text-muted-foreground leading-relaxed mb-6">
+                  Naberstone supports deployment of RFIS across defense,
+                  intelligence, and federal infrastructure programs through
+                  procurement-aligned pathways.
+                </p>
+              </div>
+              <div className="order-3 lg:order-none">
+                <p className="text-sm text-muted-foreground/60 italic leading-relaxed mb-8">
+                  Federal engagement inquiries are handled through direct contact
+                  with appropriate clearance and procurement context provided.
+                </p>
+                <Link
+                  href="/contact"
+                  className={cn(
+                    buttonVariants({ variant: "outline", size: "lg" }),
+                    "border-primary text-primary hover:bg-primary/10"
+                  )}
+                >
+                  See RFIS in Data Centers
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </div>
             </div>
 
-            <Link
-              href="/contact"
-              className={cn(
-                buttonVariants({ variant: "outline", size: "lg" }),
-                "border-primary text-primary hover:bg-primary/10"
-              )}
-            >
-              Inquire About Federal Engagement
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
+            {/* Right — program contexts */}
+            <div className="order-2 lg:order-none lg:pt-12">
+              <p className="text-xs font-semibold tracking-[0.15em] uppercase text-muted-foreground mb-8">
+                Program Contexts
+              </p>
+              <div className="space-y-6">
+                {programContexts.map((item, i) => (
+                  <div key={i} className="flex items-start gap-4">
+                    <div className="h-2 w-2 rounded-full bg-primary mt-1.5 flex-shrink-0" />
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {item}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

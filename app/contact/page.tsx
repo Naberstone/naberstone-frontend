@@ -102,29 +102,51 @@ export default function ContactPage() {
     }
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formState),
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to submit");
+      }
+
+      setSubmitted(true);
+    } catch {
+      setError("Something went wrong. Please try again or email support@naberstone.com directly.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
     <>
       {/* ── Section 1: Hero ──────────────────────────────────────────────── */}
-      <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+      <section className="relative pt-32 pb-16 lg:pb-20 overflow-hidden">
         <Image
-          src="/images/hero-contact.jpg"
-          alt="Business meeting and lab scene"
+          src="/images/hero-contact-cleanroom.jpg"
+          alt="RFIS manufacturing cleanroom environment"
           fill
-          className="object-cover"
           priority
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-black/60" />
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
           <SectionLabel>Contact</SectionLabel>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground max-w-4xl leading-[1.05] mb-8">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white max-w-4xl leading-[1.08] mb-6">
             Start Your RFIS Deployment Pathway
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
+          <p className="text-base text-white max-w-2xl leading-relaxed">
             Engage RFIS at the operator, OEM, or federal level — structured to
             your infrastructure, product, or program.
           </p>
@@ -330,12 +352,20 @@ export default function ContactPage() {
                     />
                   </div>
 
+                  {error && (
+                    <p className="text-sm text-red-400 text-center">
+                      {error}
+                    </p>
+                  )}
+
                   <Button
                     type="submit"
                     size="lg"
                     className="w-full glow-amber"
+                    disabled={submitting}
                   >
-                    Submit Inquiry <Send className="ml-2 h-4 w-4" />
+                    {submitting ? "Submitting..." : "Submit Inquiry"}{" "}
+                    <Send className="ml-2 h-4 w-4" />
                   </Button>
 
                   <p className="text-xs text-muted-foreground/50 text-center">
