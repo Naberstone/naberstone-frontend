@@ -100,7 +100,7 @@ export function Navigation() {
               >
                 <Menu className="h-5 w-5" />
               </SheetTrigger>
-              <SheetContent side="right" className="w-72 bg-card border-border">
+              <SheetContent side="right" className="w-72 bg-card border-border px-8">
                 <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                 <div className="flex flex-col h-full pt-8">
                   <div className="mb-8">
