@@ -103,7 +103,7 @@ export function Navigation() {
               <SheetContent side="right" className="w-72 bg-card border-border px-8">
                 <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                 <div className="flex flex-col h-full pt-8">
-                  <div className="mb-8">
+                  <div className="mb-8 px-3">
                     <Image
                       src="/images/naberstone-logo-white.png"
                       alt="Naberstone"
