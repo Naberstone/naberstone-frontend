@@ -73,23 +73,22 @@ export function WaitlistModal({ open, onClose }: WaitlistModalProps) {
     setStatus("loading");
 
     try {
-      // ─── CONNECT TO YOUR BACKEND / CRM HERE ───────────────────────
-      // Replace this with your actual API endpoint to save waitlist data.
-      // Example:
-      //   const res = await fetch("/api/waitlist", {
-      //     method: "POST",
-      //     headers: { "Content-Type": "application/json" },
-      //     body: JSON.stringify({ name, email, phone: phone || null }),
-      //   });
-      //   if (!res.ok) throw new Error("Failed to submit");
-      //
-      // For now, simulate a network request:
-      await new Promise((resolve) => setTimeout(resolve, 1200));
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, phone: phone || null }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Failed to submit");
+      }
 
       setStatus("success");
-      // ──────────────────────────────────────────────────────────────
-    } catch {
-      setErrorMessage("Something went wrong. Please try again.");
+    } catch (err) {
+      setErrorMessage(
+        err instanceof Error ? err.message : "Something went wrong. Please try again."
+      );
       setStatus("error");
     }
   };
