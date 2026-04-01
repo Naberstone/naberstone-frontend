@@ -139,7 +139,7 @@ export function ProductPage() {
 
   return (
     <>
-      {/* ── 1. HERO / PRODUCT INTRO ──────────────────────────────────────── */}
+      {/* ── 1. HERO — SHOPIFY-STYLE PRODUCT LAYOUT ─────────────────────── */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
         {/* Background glow */}
         <div
@@ -151,9 +151,70 @@ export function ProductPage() {
         />
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left — Product Info */}
-            <div className="order-2 lg:order-1">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+            {/* Left — Product Gallery (main + thumbnails) */}
+            <div className="order-1">
+              <div className="relative">
+                {/* Sold out ribbon */}
+                <div className="absolute top-4 right-4 z-10">
+                  <span className="text-[10px] font-semibold tracking-[0.15em] uppercase bg-background/80 backdrop-blur-sm text-red-400 border border-red-500/20 px-3 py-1.5 rounded-full">
+                    Sold Out
+                  </span>
+                </div>
+
+                {/* Main product image — REPLACE with actual product image */}
+                <div className="aspect-square bg-card border border-border rounded-2xl overflow-hidden glow-amber">
+                  <div className="w-full h-full flex items-center justify-center relative">
+                    <div
+                      className="absolute inset-0 pointer-events-none"
+                      style={{
+                        background:
+                          "radial-gradient(ellipse at center, rgb(230 186 24 / 0.03) 0%, transparent 70%)",
+                      }}
+                    />
+                    <div className="text-center relative z-10">
+                      <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                        <Shield className="h-12 w-12 text-primary" />
+                      </div>
+                      <p className="text-2xl font-bold text-foreground mb-1">
+                        RFIS-X1
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        {GALLERY_IMAGES[activeImage].placeholder}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Thumbnail strip */}
+                <div className="grid grid-cols-4 gap-3 mt-3">
+                  {GALLERY_IMAGES.map((img, i) => (
+                    <button
+                      key={img.id}
+                      onClick={() => setActiveImage(i)}
+                      className={`aspect-square bg-card border rounded-lg overflow-hidden transition-all ${
+                        activeImage === i
+                          ? "border-primary ring-1 ring-primary/30"
+                          : "border-border hover:border-primary/30"
+                      }`}
+                    >
+                      {/* REPLACE: swap with actual thumbnail images */}
+                      <div className="w-full h-full flex items-center justify-center">
+                        <div className="text-center">
+                          <Shield className="h-5 w-5 text-primary/20 mx-auto mb-0.5" />
+                          <p className="text-[9px] text-muted-foreground/60 px-1 leading-tight">
+                            {img.label}
+                          </p>
+                        </div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Right — Product Info */}
+            <div className="order-2 lg:sticky lg:top-28">
               <SectionLabel>Limited Release</SectionLabel>
 
               {/* Sold out badge */}
@@ -177,11 +238,14 @@ export function ProductPage() {
                 {PRODUCT.heroDescription}
               </p>
 
+              {/* Divider */}
+              <div className="border-t border-border mb-8" />
+
               {/* Primary CTA */}
               <div className="flex flex-col sm:flex-row gap-4 mb-4">
                 <button
                   onClick={() => setModalOpen(true)}
-                  className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-semibold text-sm tracking-wide px-8 py-4 rounded-lg hover:bg-primary/90 transition-all active:translate-y-px"
+                  className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-semibold text-sm tracking-wide px-8 py-4 rounded-lg hover:bg-primary/90 transition-all active:translate-y-px w-full sm:w-auto"
                 >
                   <Bell className="h-4 w-4" />
                   {PRODUCT.waitlistCta}
@@ -190,107 +254,6 @@ export function ProductPage() {
               <p className="text-xs text-muted-foreground/60">
                 {PRODUCT.waitlistSubtext}
               </p>
-            </div>
-
-            {/* Right — Hero Product Image */}
-            <div className="order-1 lg:order-2">
-              <div className="relative">
-                {/* Sold out ribbon */}
-                <div className="absolute top-4 right-4 z-10">
-                  <span className="text-[10px] font-semibold tracking-[0.15em] uppercase bg-background/80 backdrop-blur-sm text-red-400 border border-red-500/20 px-3 py-1.5 rounded-full">
-                    Sold Out
-                  </span>
-                </div>
-
-                {/* Product image placeholder — REPLACE with actual product image */}
-                <div className="aspect-square bg-card border border-border rounded-2xl overflow-hidden glow-amber">
-                  <div className="w-full h-full flex items-center justify-center relative">
-                    <div
-                      className="absolute inset-0 pointer-events-none"
-                      style={{
-                        background:
-                          "radial-gradient(ellipse at center, rgb(230 186 24 / 0.03) 0%, transparent 70%)",
-                      }}
-                    />
-                    <div className="text-center relative z-10">
-                      <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                        <Shield className="h-12 w-12 text-primary" />
-                      </div>
-                      <p className="text-2xl font-bold text-foreground mb-1">
-                        RFIS-X1
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        Product image coming soon
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 2. PRODUCT GALLERY ───────────────────────────────────────────── */}
-      <section className="border-t border-border py-20 lg:py-28">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <SectionLabel>Gallery</SectionLabel>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-12">
-            Every angle. Every detail.
-          </h2>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            {/* Main image */}
-            <div className="lg:col-span-8">
-              {/* REPLACE: swap src with actual product photo */}
-              <div className="aspect-[4/3] bg-card border border-border rounded-xl overflow-hidden relative group">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div
-                    className="absolute inset-0 pointer-events-none"
-                    style={{
-                      background:
-                        "radial-gradient(ellipse at center, rgb(230 186 24 / 0.02) 0%, transparent 70%)",
-                    }}
-                  />
-                  <div className="text-center relative z-10">
-                    <Shield className="h-16 w-16 text-primary/30 mx-auto mb-3" />
-                    <p className="text-sm text-muted-foreground">
-                      {GALLERY_IMAGES[activeImage].placeholder}
-                    </p>
-                  </div>
-                </div>
-                {/* Sold out overlay */}
-                <div className="absolute top-4 left-4 z-10">
-                  <span className="text-[10px] font-semibold tracking-[0.15em] uppercase bg-red-500/10 text-red-400 border border-red-500/20 px-3 py-1.5 rounded-full">
-                    Sold Out
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Thumbnails */}
-            <div className="lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-4">
-              {GALLERY_IMAGES.map((img, i) => (
-                <button
-                  key={img.id}
-                  onClick={() => setActiveImage(i)}
-                  className={`aspect-square bg-card border rounded-lg overflow-hidden transition-all ${
-                    activeImage === i
-                      ? "border-primary ring-1 ring-primary/30"
-                      : "border-border hover:border-primary/30"
-                  }`}
-                >
-                  {/* REPLACE: swap with actual thumbnail images */}
-                  <div className="w-full h-full flex items-center justify-center">
-                    <div className="text-center">
-                      <Shield className="h-6 w-6 text-primary/20 mx-auto mb-1" />
-                      <p className="text-[10px] text-muted-foreground/60">
-                        {img.label}
-                      </p>
-                    </div>
-                  </div>
-                </button>
-              ))}
             </div>
           </div>
         </div>
