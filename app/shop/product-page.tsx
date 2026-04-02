@@ -36,8 +36,8 @@ const PRODUCT = {
 };
 
 const GALLERY_ITEMS = [
-  { id: 1, label: "Front View", src: "/images/shop/rfis-x1-front.png", alt: "RFIS-X1 Front View", type: "image" as const },
-  { id: 2, label: "With Box", src: "/images/shop/rfis-x1-with-box.png", alt: "RFIS-X1 With Packaging", type: "image" as const },
+  { id: 1, label: "With Box", src: "/images/shop/rfis-x1-with-box.png", alt: "RFIS-X1 With Packaging", type: "image" as const },
+  { id: 2, label: "Front View", src: "/images/shop/rfis-x1-front.png", alt: "RFIS-X1 Front View", type: "image" as const },
   { id: 3, label: "Detail Shot", src: "/images/shop/rfis-x1-top-view.png", alt: "RFIS-X1 Top Detail View", type: "image" as const },
   { id: 4, label: "Float View", src: "/images/shop/rfis-x1-float.png", alt: "RFIS-X1 Floating View", type: "image" as const },
   { id: 5, label: "Watch Video", src: "", alt: "", type: "video" as const, videoId: "IPQktdzAIwI" },
@@ -186,7 +186,7 @@ export function ProductPage() {
                       src={GALLERY_ITEMS[activeImage].src}
                       alt={GALLERY_ITEMS[activeImage].alt}
                       fill
-                      className="object-cover"
+                      className="object-contain p-4"
                       sizes="(max-width: 1024px) 100vw, 50vw"
                       priority={activeImage === 0}
                     />
@@ -214,7 +214,7 @@ export function ProductPage() {
                           src={item.src}
                           alt={item.alt}
                           fill
-                          className="object-cover"
+                          className="object-contain p-1"
                           sizes="80px"
                         />
                       )}
