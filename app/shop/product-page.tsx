@@ -35,10 +35,10 @@ const PRODUCT = {
 };
 
 const GALLERY_ITEMS = [
-  { id: 1, label: "Watch Video", placeholder: "RFIS-X1 — Promo Video", type: "video" as const, videoId: "IPQktdzAIwI" },
-  { id: 2, label: "Front View", placeholder: "RFIS-X1 — Front Angle", type: "image" as const },
-  { id: 3, label: "Side Profile", placeholder: "RFIS-X1 — Side Profile", type: "image" as const },
-  { id: 4, label: "Detail Shot", placeholder: "RFIS-X1 — Detail Shot", type: "image" as const },
+  { id: 1, label: "Front View", placeholder: "RFIS-X1 — Front Angle", type: "image" as const },
+  { id: 2, label: "Side Profile", placeholder: "RFIS-X1 — Side Profile", type: "image" as const },
+  { id: 3, label: "Detail Shot", placeholder: "RFIS-X1 — Detail Shot", type: "image" as const },
+  { id: 4, label: "Watch Video", placeholder: "RFIS-X1 — Promo Video", type: "video" as const, videoId: "IPQktdzAIwI" },
 ];
 
 const VALUE_PROPS = [
@@ -170,7 +170,7 @@ export function ProductPage() {
                 </div>
 
                 {/* Main display — video or image */}
-                <div className="aspect-square bg-card border border-border rounded-2xl overflow-hidden glow-amber">
+                <div className={`${GALLERY_ITEMS[activeImage].type === "video" ? "aspect-video" : "aspect-square"} bg-card border border-border rounded-2xl overflow-hidden glow-amber`}>
                   {GALLERY_ITEMS[activeImage].type === "video" ? (
                     <iframe
                       src={`https://www.youtube.com/embed/${GALLERY_ITEMS[activeImage].videoId}?autoplay=1&mute=1&loop=1&playlist=${GALLERY_ITEMS[activeImage].videoId}&controls=1&showinfo=0&rel=0&modestbranding=1`}
