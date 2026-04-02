@@ -14,110 +14,117 @@ import {
   Bell,
   Clock,
   ArrowRight,
+  Play,
+  Flame,
+  Wind,
+  ShieldCheck,
 } from "lucide-react";
 
 // ─── Content (editable in one place) ────────────────────────────────────────
 
 const PRODUCT = {
   name: "RFIS-X1",
-  tagline: "Built to stop high-risk fire events before they spread.",
+  tagline: "The fire extinguisher that actually works on lithium battery fires.",
   subtitle: "Reactive Fire Interruption Extinguisher",
   heroDescription:
-    "The first fire extinguisher purpose-engineered for lithium battery thermal events. Industrial-grade construction. Chemistry-layer interruption agent. Designed for the environments where legacy extinguishers fail.",
+    "Lithium batteries are everywhere — in your building, your vehicles, your charging stations. But your fire extinguisher? It wasn't made for them. The RFIS-X1 is the only extinguisher built from the ground up to stop lithium battery fires. Nothing else on the market does this.",
   soldOutLabel: "Sold Out",
-  nextRelease: "Next Release Pending",
-  waitlistCta: "Join the Waitlist",
-  waitlistSubtext: "Get notified when the next release becomes available.",
+  nextRelease: "Next Batch Coming Soon",
+  waitlistCta: "Get on the Waitlist",
+  waitlistSubtext: "Be the first to know when it's back in stock. No spam, ever.",
 };
 
-const GALLERY_IMAGES = [
-  // Replace these with actual product image paths
-  { id: 1, label: "Front View", placeholder: "RFIS-X1 — Front Angle" },
-  { id: 2, label: "Side Profile", placeholder: "RFIS-X1 — Side Profile" },
-  { id: 3, label: "Detail Close-up", placeholder: "RFIS-X1 — Detail Shot" },
-  { id: 4, label: "Installed Context", placeholder: "RFIS-X1 — In Environment" },
+const GALLERY_ITEMS = [
+  { id: 1, label: "Watch Video", placeholder: "RFIS-X1 — Promo Video", type: "video" as const, videoId: "IPQktdzAIwI" },
+  { id: 2, label: "Front View", placeholder: "RFIS-X1 — Front Angle", type: "image" as const },
+  { id: 3, label: "Side Profile", placeholder: "RFIS-X1 — Side Profile", type: "image" as const },
+  { id: 4, label: "Detail Shot", placeholder: "RFIS-X1 — Detail Shot", type: "image" as const },
 ];
 
 const VALUE_PROPS = [
   {
     icon: Zap,
-    title: "Lithium-Optimized Agent",
-    description: "Chemistry-layer formulation built to interrupt thermal runaway propagation in lithium battery events.",
+    title: "Stops Lithium Battery Fires",
+    description: "Regular extinguishers don't work on lithium battery fires. Period. The RFIS-X1 uses a special agent made to shut them down.",
   },
   {
-    icon: Shield,
-    title: "Industrial-Grade Build",
-    description: "All-metal enclosure with premium powder-coat finish. Engineered for high-consequence environments.",
+    icon: ShieldCheck,
+    title: "All-Class Fire Protection",
+    description: "The RFIS-X1 isn't just for lithium battery fires. It also handles Class A (wood, paper, fabric), Class B (flammable liquids), and Class C (electrical) fires. One extinguisher that covers everything.",
   },
   {
     icon: Target,
-    title: "Rapid Deployment Design",
-    description: "Optimized ergonomics and fast-access mounting for critical seconds that define outcomes.",
+    title: "Grab and Go",
+    description: "When a fire starts, seconds matter. The RFIS-X1 is designed so anyone can grab it, pull the pin, and use it — fast.",
   },
   {
     icon: Factory,
-    title: "Infrastructure-Ready",
-    description: "Purpose-built for data centers, BESS facilities, EV charging infrastructure, and fleet operations.",
+    title: "Works Everywhere You Need It",
+    description: "Homes. Garages. Office buildings. EV chargers. Server rooms. Warehouses. Battery storage. Wherever you have lithium batteries — or any fire risk — the RFIS-X1 belongs on the wall.",
   },
 ];
 
 const FEATURES = [
   {
-    icon: Layers,
-    title: "Chemistry-Layer Interruption",
-    description: "Proprietary agent formulated to address lithium's self-oxidizing fire behavior — what conventional extinguishers can't stop.",
+    icon: Flame,
+    title: "Stops the Fires Nothing Else Can",
+    description: "Lithium batteries make their own oxygen when they burn. That's why regular extinguishers fail and the fire keeps coming back. The RFIS-X1 was built with a special agent that breaks this cycle and puts it out for good.",
   },
   {
-    icon: Shield,
-    title: "Premium Enclosure",
-    description: "Full-metal construction with corrosion-resistant finish. Built to perform in industrial, commercial, and critical infrastructure environments.",
+    icon: ShieldCheck,
+    title: "Covers Every Type of Fire",
+    description: "Class A — wood, paper, fabric. Class B — gasoline, oil, solvents. Class C — electrical equipment. Plus lithium battery fires. The RFIS-X1 handles all of them. Replace every extinguisher on your wall with one that actually covers everything.",
   },
   {
-    icon: Target,
-    title: "Fast-Access Format",
-    description: "Engineered mounting system with optimized pull-pin geometry for rapid deployment under pressure.",
+    icon: Wind,
+    title: "Prevents Toxic Smoke Exposure",
+    description: "Lithium battery fires release toxic fumes that can fill a room in seconds. Having the right extinguisher means putting the fire out before the smoke becomes the bigger danger.",
   },
   {
     icon: Zap,
-    title: "Modern Fire Architecture",
-    description: "Designed for electrified environments — EV charging, battery storage, server rooms — where legacy extinguishers were never tested.",
+    title: "Stops Fires From Spreading",
+    description: "Lithium battery fires burn hotter and faster than normal fires. They can jump to nearby batteries, walls, and furniture in minutes. The RFIS-X1 stops the fire at the source before it takes over.",
   },
   {
     icon: Award,
-    title: "Engineered by Naberstone",
-    description: "Backed by our Reactive Fire Interruption Systems platform. Every component is purpose-designed, not adapted from legacy products.",
+    title: "Protects What Insurance Won't Replace",
+    description: "A house fire from an e-bike in the garage. A server room fire that takes down your business. Insurance pays for damage — it doesn't undo it. The RFIS-X1 gives you a chance to stop it before there's damage at all.",
   },
   {
     icon: Factory,
-    title: "Deployment-Ready",
-    description: "Ships with wall-mount bracket, response guidance documentation, and compliance-ready specifications for facility integration.",
+    title: "Ready to Install",
+    description: "Comes with a wall mount, setup guide, and everything you need. Hang it in your garage, kitchen, office, or server room. No extra parts. No professional install. Ready in minutes.",
   },
 ];
 
 const FAQS = [
   {
-    question: "When will the RFIS-X1 be available again?",
-    answer: "Our current production allocation is fully committed. Join the waitlist to be first in line when the next manufacturing run is released. Waitlist subscribers receive priority notification before general availability.",
+    question: "When can I buy one?",
+    answer: "The first batch is sold out. We're making more now. Join the waitlist and you'll be the first to know when they're ready — before anyone else.",
   },
   {
     question: "What happens after I join the waitlist?",
-    answer: "You'll receive a confirmation email immediately. When new inventory becomes available, we'll notify waitlist subscribers in order of sign-up before announcing general availability. You'll have a priority window to secure your unit.",
+    answer: "You'll get a confirmation email right away. When the next batch is ready, we'll email you first — before it goes public. You'll get a head start to grab yours.",
   },
   {
-    question: "Will waitlist subscribers get early access?",
-    answer: "Yes. Waitlist subscribers will be notified before the general public and receive a priority purchase window when new inventory is released.",
+    question: "Do waitlist people get to buy first?",
+    answer: "Yes. Waitlist members get first access. You'll be able to buy before we open it up to everyone else.",
   },
   {
-    question: "Is phone number required to join the waitlist?",
-    answer: "No. Only your name and email are required. Adding your phone number is optional and gives you access to priority SMS restock alerts for the fastest notification possible.",
+    question: "Do I have to give my phone number?",
+    answer: "No. Just your name and email. Phone is optional — it just means you'll also get a text when it's back in stock, so you hear about it even faster.",
   },
   {
-    question: "Who is the RFIS-X1 designed for?",
-    answer: "The RFIS-X1 is built for anyone operating in environments with lithium battery fire risk — data centers, EV charging facilities, battery energy storage systems, fleet operations, commercial buildings, and critical infrastructure. It's designed for facility managers, safety officers, fleet operators, and infrastructure teams who need fire response equipment that actually works against modern fire chemistry.",
+    question: "Who is this for?",
+    answer: "Anyone with lithium batteries nearby. If you have an EV, e-bike, home solar battery, or you manage a building with a server room, battery storage, or EV chargers — this is for you. It's also for fleet managers, safety teams, and facility operators.",
   },
   {
-    question: "How is this different from a standard fire extinguisher?",
-    answer: "Standard ABC and CO2 extinguishers were not designed for lithium battery fires. Lithium fires are self-oxidizing — they generate their own oxygen, which makes conventional agents ineffective. The RFIS-X1 uses a chemistry-layer interruption agent specifically formulated to stop lithium thermal runaway propagation.",
+    question: "Why can't I just use a regular fire extinguisher?",
+    answer: "Because regular fire extinguishers were made for wood, paper, and electrical fires. Lithium battery fires are completely different — they make their own oxygen and can restart after you put them out. A regular extinguisher simply won't stop one. The RFIS-X1 will.",
+  },
+  {
+    question: "Is this only for lithium battery fires?",
+    answer: "No. The RFIS-X1 handles lithium battery fires, but it also works on Class A (wood, paper, fabric), Class B (gasoline, oil, solvents), and Class C (electrical) fires. It's a true all-class extinguisher. You don't need a different one for different fire types — the RFIS-X1 covers them all.",
   },
 ];
 
@@ -162,35 +169,46 @@ export function ProductPage() {
                   </span>
                 </div>
 
-                {/* Main product image — REPLACE with actual product image */}
+                {/* Main display — video or image */}
                 <div className="aspect-square bg-card border border-border rounded-2xl overflow-hidden glow-amber">
-                  <div className="w-full h-full flex items-center justify-center relative">
-                    <div
-                      className="absolute inset-0 pointer-events-none"
-                      style={{
-                        background:
-                          "radial-gradient(ellipse at center, rgb(230 186 24 / 0.03) 0%, transparent 70%)",
-                      }}
+                  {GALLERY_ITEMS[activeImage].type === "video" ? (
+                    <iframe
+                      src={`https://www.youtube.com/embed/${GALLERY_ITEMS[activeImage].videoId}?autoplay=1&mute=1&loop=1&playlist=${GALLERY_ITEMS[activeImage].videoId}&controls=1&showinfo=0&rel=0&modestbranding=1`}
+                      title="RFIS-X1 Product Video"
+                      allow="autoplay; encrypted-media"
+                      allowFullScreen
+                      className="w-full h-full border-0"
                     />
-                    <div className="text-center relative z-10">
-                      <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                        <Shield className="h-12 w-12 text-primary" />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center relative">
+                      <div
+                        className="absolute inset-0 pointer-events-none"
+                        style={{
+                          background:
+                            "radial-gradient(ellipse at center, rgb(230 186 24 / 0.03) 0%, transparent 70%)",
+                        }}
+                      />
+                      {/* REPLACE: swap with actual product image */}
+                      <div className="text-center relative z-10">
+                        <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                          <Shield className="h-12 w-12 text-primary" />
+                        </div>
+                        <p className="text-2xl font-bold text-foreground mb-1">
+                          RFIS-X1
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          {GALLERY_ITEMS[activeImage].placeholder}
+                        </p>
                       </div>
-                      <p className="text-2xl font-bold text-foreground mb-1">
-                        RFIS-X1
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        {GALLERY_IMAGES[activeImage].placeholder}
-                      </p>
                     </div>
-                  </div>
+                  )}
                 </div>
 
                 {/* Thumbnail strip */}
                 <div className="grid grid-cols-4 gap-3 mt-3">
-                  {GALLERY_IMAGES.map((img, i) => (
+                  {GALLERY_ITEMS.map((item, i) => (
                     <button
-                      key={img.id}
+                      key={item.id}
                       onClick={() => setActiveImage(i)}
                       className={`aspect-square bg-card border rounded-lg overflow-hidden transition-all ${
                         activeImage === i
@@ -198,12 +216,15 @@ export function ProductPage() {
                           : "border-border hover:border-primary/30"
                       }`}
                     >
-                      {/* REPLACE: swap with actual thumbnail images */}
                       <div className="w-full h-full flex items-center justify-center">
                         <div className="text-center">
-                          <Shield className="h-5 w-5 text-primary/20 mx-auto mb-0.5" />
+                          {item.type === "video" ? (
+                            <Play className="h-5 w-5 text-primary/40 mx-auto mb-0.5" />
+                          ) : (
+                            <Shield className="h-5 w-5 text-primary/20 mx-auto mb-0.5" />
+                          )}
                           <p className="text-[9px] text-muted-foreground/60 px-1 leading-tight">
-                            {img.label}
+                            {item.label}
                           </p>
                         </div>
                       </div>
@@ -286,25 +307,24 @@ export function ProductPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left — Story */}
             <div>
-              <SectionLabel>Why RFIS-X1</SectionLabel>
+              <SectionLabel>The Problem</SectionLabel>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-6 leading-tight">
-                Fire equipment hasn&apos;t evolved.<br />
-                Fire risk has.
+                Your fire extinguisher<br />
+                won&apos;t save you.
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  The fire extinguisher market is built on decades-old chemistry designed for paper,
-                  wood, and electrical fires. But the environments we build today run on lithium — and
-                  lithium fires don&apos;t follow the same rules.
+                  Here&apos;s the truth most people don&apos;t know: the fire extinguisher on your wall
+                  right now was designed for paper, wood, and electrical fires. It was never made for
+                  lithium batteries.
                 </p>
                 <p>
-                  Lithium battery thermal events are self-oxidizing. They generate their own oxygen.
-                  They can reignite after suppression. Standard extinguishers weren&apos;t designed
-                  for this — because they didn&apos;t have to be.
+                  Lithium battery fires are different. They make their own oxygen. They reignite after
+                  you think they&apos;re out. They burn hotter. And they&apos;re spreading to more places
+                  every year — EVs, e-bikes, scooters, solar batteries, data centers.
                 </p>
                 <p className="text-foreground font-medium">
-                  The RFIS-X1 was purpose-engineered from the ground up for this new reality. Not
-                  adapted. Not rebranded. Built.
+                  Until now, there was nothing you could buy to stop one. The RFIS-X1 changes that.
                 </p>
               </div>
             </div>
@@ -314,36 +334,35 @@ export function ProductPage() {
               <div className="bg-card border border-border rounded-xl p-8">
                 <div className="grid grid-cols-2 gap-8">
                   <div>
-                    <p className="text-3xl font-bold text-primary mb-1">17M+</p>
+                    <p className="text-3xl font-bold text-primary mb-1">40M+</p>
                     <p className="text-xs text-muted-foreground tracking-wide uppercase">
-                      EVs on global roads
+                      Lithium battery devices in U.S. homes
                     </p>
                   </div>
                   <div>
-                    <p className="text-3xl font-bold text-primary mb-1">40%</p>
+                    <p className="text-3xl font-bold text-primary mb-1">300%</p>
                     <p className="text-xs text-muted-foreground tracking-wide uppercase">
-                      Code gap in fire safety
+                      Rise in lithium battery fires since 2019
                     </p>
                   </div>
                   <div>
-                    <p className="text-3xl font-bold text-primary mb-1">$900B+</p>
+                    <p className="text-3xl font-bold text-primary mb-1">$2.6B</p>
                     <p className="text-xs text-muted-foreground tracking-wide uppercase">
-                      Annual fire loss exposure
+                      Property damage from battery fires last year
                     </p>
                   </div>
                   <div>
                     <p className="text-3xl font-bold text-primary mb-1">0</p>
                     <p className="text-xs text-muted-foreground tracking-wide uppercase">
-                      Legacy extinguishers built for lithium
+                      Other extinguishers built for every fire class including lithium
                     </p>
                   </div>
                 </div>
               </div>
               <div className="bg-card border border-primary/20 rounded-xl p-6">
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  <span className="text-foreground font-semibold">High demand, limited supply.</span>{" "}
-                  The first RFIS-X1 production run sold out before public availability. Join the
-                  waitlist to secure your allocation in the next release.
+                  <span className="text-foreground font-semibold">The first RFIS-X1 batch sold out before we could even list it publicly.</span>{" "}
+                  Get on the waitlist now to lock in your spot for the next release.
                 </p>
               </div>
             </div>
@@ -355,13 +374,13 @@ export function ProductPage() {
       <section className="border-t border-border py-20 lg:py-28 bg-card/50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <SectionLabel>Features</SectionLabel>
+            <SectionLabel>What It Does</SectionLabel>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
-              Engineered with intent.
+              The problems it solves.
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Every component of the RFIS-X1 was designed for one purpose — reliable interruption
-              of lithium battery fire events in the environments where it matters most.
+              Lithium battery fires are getting more common. Here&apos;s what the RFIS-X1 actually
+              does to protect you, your family, and your property.
             </p>
           </div>
 
@@ -400,16 +419,19 @@ export function ProductPage() {
             <div className="inline-flex items-center gap-2 mb-6">
               <Clock className="h-4 w-4 text-primary" />
               <span className="text-xs font-semibold tracking-[0.15em] uppercase text-primary">
-                Current Release Fully Allocated
+                First Batch Sold Out
               </span>
             </div>
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-6 leading-tight">
-              Don&apos;t wait for general availability.
+              The first batch sold out.<br />
+              Don&apos;t miss the next one.
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-xl mx-auto">
-              Waitlist subscribers get first notification when inventory opens.
-              Secure your position now for priority access to the next RFIS-X1 release.
+              People are waking up to the fact that their current fire extinguisher won&apos;t protect
+              them from lithium battery fires. The first run of the RFIS-X1 sold out before we could
+              even list it publicly. Get on the waitlist now — you&apos;ll be first in line when
+              the next batch drops.
             </p>
 
             <button
@@ -419,9 +441,6 @@ export function ProductPage() {
               <Bell className="h-4 w-4" />
               {PRODUCT.waitlistCta}
             </button>
-            <p className="text-xs text-muted-foreground/50 mt-4">
-              Join over the growing list of professionals waiting for the next release.
-            </p>
           </div>
         </div>
       </section>
@@ -479,14 +498,15 @@ export function ProductPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <div className="text-center">
             <p className="text-xs font-semibold tracking-[0.15em] uppercase text-primary mb-4">
-              Next Release Coming Soon
+              Next Batch Coming Soon
             </p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6 leading-tight">
-              Be first in line.
+              Don&apos;t wait until it&apos;s too late.
             </h2>
             <p className="text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed mb-10">
-              The RFIS-X1 is the fire extinguisher built for what comes next.
-              Join the waitlist and we&apos;ll let you know the moment inventory opens.
+              Lithium batteries are in more places every day. When something goes wrong, you need the
+              right tool on the wall — not a fire extinguisher that was never made for this.
+              Get on the waitlist now.
             </p>
 
             <button
