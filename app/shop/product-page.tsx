@@ -162,7 +162,7 @@ export function ProductPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
             {/* Left — Product Gallery (main + thumbnails) */}
-            <div className="order-1">
+            <div className="order-1 lg:max-w-[420px]">
               <div className="relative">
                 {/* Sold out ribbon */}
                 <div className="absolute top-4 right-4 z-10">
@@ -187,14 +187,14 @@ export function ProductPage() {
                       alt={GALLERY_ITEMS[activeImage].alt}
                       fill
                       className="object-contain"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      sizes="(max-width: 1024px) 100vw, 420px"
                       priority={activeImage === 0}
                     />
                   )}
                 </div>
 
                 {/* Thumbnail strip */}
-                <div className="grid grid-cols-5 gap-3 mt-3">
+                <div className="grid grid-cols-5 gap-2 mt-2">
                   {GALLERY_ITEMS.map((item, i) => (
                     <button
                       key={item.id}
