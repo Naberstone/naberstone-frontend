@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { SectionLabel } from "@/components/shared/section-label";
 import { WaitlistModal } from "./waitlist-modal";
 import {
@@ -35,10 +36,11 @@ const PRODUCT = {
 };
 
 const GALLERY_ITEMS = [
-  { id: 1, label: "Front View", placeholder: "RFIS-X1 — Front Angle", type: "image" as const },
-  { id: 2, label: "Side Profile", placeholder: "RFIS-X1 — Side Profile", type: "image" as const },
-  { id: 3, label: "Detail Shot", placeholder: "RFIS-X1 — Detail Shot", type: "image" as const },
-  { id: 4, label: "Watch Video", placeholder: "RFIS-X1 — Promo Video", type: "video" as const, videoId: "IPQktdzAIwI" },
+  { id: 1, label: "Front View", src: "/images/shop/rfis-x1-front.png", alt: "RFIS-X1 Front View", type: "image" as const },
+  { id: 2, label: "With Box", src: "/images/shop/rfis-x1-with-box.png", alt: "RFIS-X1 With Packaging", type: "image" as const },
+  { id: 3, label: "Detail Shot", src: "/images/shop/rfis-x1-top-view.png", alt: "RFIS-X1 Top Detail View", type: "image" as const },
+  { id: 4, label: "Float View", src: "/images/shop/rfis-x1-float.png", alt: "RFIS-X1 Floating View", type: "image" as const },
+  { id: 5, label: "Watch Video", src: "", alt: "", type: "video" as const, videoId: "IPQktdzAIwI" },
 ];
 
 const VALUE_PROPS = [
@@ -170,7 +172,7 @@ export function ProductPage() {
                 </div>
 
                 {/* Main display — video or image */}
-                <div className={`${GALLERY_ITEMS[activeImage].type === "video" ? "aspect-video" : "aspect-square"} bg-card border border-border rounded-2xl overflow-hidden glow-amber transition-all`}>
+                <div className={`${GALLERY_ITEMS[activeImage].type === "video" ? "aspect-video" : "aspect-square"} bg-card border border-border rounded-2xl overflow-hidden glow-amber transition-all relative`}>
                   {GALLERY_ITEMS[activeImage].type === "video" ? (
                     <iframe
                       src={`https://www.youtube.com/embed/${GALLERY_ITEMS[activeImage].videoId}?autoplay=1&mute=1&loop=1&playlist=${GALLERY_ITEMS[activeImage].videoId}&controls=1&showinfo=0&rel=0&modestbranding=1`}
@@ -180,54 +182,42 @@ export function ProductPage() {
                       className="w-full h-full border-0"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center relative">
-                      <div
-                        className="absolute inset-0 pointer-events-none"
-                        style={{
-                          background:
-                            "radial-gradient(ellipse at center, rgb(230 186 24 / 0.03) 0%, transparent 70%)",
-                        }}
-                      />
-                      {/* REPLACE: swap with actual product image */}
-                      <div className="text-center relative z-10">
-                        <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                          <Shield className="h-12 w-12 text-primary" />
-                        </div>
-                        <p className="text-2xl font-bold text-foreground mb-1">
-                          RFIS-X1
-                        </p>
-                        <p className="text-xs text-muted-foreground">
-                          {GALLERY_ITEMS[activeImage].placeholder}
-                        </p>
-                      </div>
-                    </div>
+                    <Image
+                      src={GALLERY_ITEMS[activeImage].src}
+                      alt={GALLERY_ITEMS[activeImage].alt}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      priority={activeImage === 0}
+                    />
                   )}
                 </div>
 
                 {/* Thumbnail strip */}
-                <div className="grid grid-cols-4 gap-3 mt-3">
+                <div className="grid grid-cols-5 gap-3 mt-3">
                   {GALLERY_ITEMS.map((item, i) => (
                     <button
                       key={item.id}
                       onClick={() => setActiveImage(i)}
-                      className={`aspect-square bg-card border rounded-lg overflow-hidden transition-all ${
+                      className={`aspect-square bg-card border rounded-lg overflow-hidden transition-all relative ${
                         activeImage === i
                           ? "border-primary ring-1 ring-primary/30"
                           : "border-border hover:border-primary/30"
                       }`}
                     >
-                      <div className="w-full h-full flex items-center justify-center">
-                        <div className="text-center">
-                          {item.type === "video" ? (
-                            <Play className="h-5 w-5 text-primary/40 mx-auto mb-0.5" />
-                          ) : (
-                            <Shield className="h-5 w-5 text-primary/20 mx-auto mb-0.5" />
-                          )}
-                          <p className="text-[9px] text-muted-foreground/60 px-1 leading-tight">
-                            {item.label}
-                          </p>
+                      {item.type === "video" ? (
+                        <div className="w-full h-full flex items-center justify-center">
+                          <Play className="h-5 w-5 text-primary/40" />
                         </div>
-                      </div>
+                      ) : (
+                        <Image
+                          src={item.src}
+                          alt={item.alt}
+                          fill
+                          className="object-contain p-1"
+                          sizes="80px"
+                        />
+                      )}
                     </button>
                   ))}
                 </div>
