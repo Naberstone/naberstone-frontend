@@ -36,9 +36,11 @@ const PRODUCT = {
 };
 
 const GALLERY_ITEMS = [
-  { id: 1, label: "Front View", src: "/images/shop/rfis-x1-front-wide.png", alt: "RFIS-X1 Front View", type: "image" as const },
-  { id: 2, label: "With Box", src: "/images/shop/rfis-x1-with-box-wide.png", alt: "RFIS-X1 With Packaging", type: "image" as const },
-  { id: 3, label: "Watch Video", src: "", alt: "", type: "video" as const, videoId: "IPQktdzAIwI" },
+  { id: 1, label: "Front View", src: "/images/shop/rfis-x1-front.png", alt: "RFIS-X1 Front View", type: "image" as const },
+  { id: 2, label: "With Box", src: "/images/shop/rfis-x1-with-box.png", alt: "RFIS-X1 With Packaging", type: "image" as const },
+  { id: 3, label: "Detail Shot", src: "/images/shop/rfis-x1-top-view.png", alt: "RFIS-X1 Top Detail View", type: "image" as const },
+  { id: 4, label: "Float View", src: "/images/shop/rfis-x1-float.png", alt: "RFIS-X1 Floating View", type: "image" as const },
+  { id: 5, label: "Watch Video", src: "", alt: "", type: "video" as const, videoId: "IPQktdzAIwI" },
 ];
 
 const VALUE_PROPS = [
@@ -170,7 +172,7 @@ export function ProductPage() {
                 </div>
 
                 {/* Main display — video or image */}
-                <div className={`${GALLERY_ITEMS[activeImage].type === "video" ? "aspect-video" : "aspect-square"} bg-card border border-border rounded-2xl overflow-hidden glow-amber transition-all relative`}>
+                <div className={`${GALLERY_ITEMS[activeImage].type === "video" ? "aspect-video" : "aspect-[3/4]"} bg-card border border-border rounded-2xl overflow-hidden glow-amber transition-all relative`}>
                   {GALLERY_ITEMS[activeImage].type === "video" ? (
                     <iframe
                       src={`https://www.youtube.com/embed/${GALLERY_ITEMS[activeImage].videoId}?autoplay=1&mute=1&loop=1&playlist=${GALLERY_ITEMS[activeImage].videoId}&controls=1&showinfo=0&rel=0&modestbranding=1`}
@@ -192,7 +194,7 @@ export function ProductPage() {
                 </div>
 
                 {/* Thumbnail strip */}
-                <div className="grid grid-cols-3 gap-3 mt-3">
+                <div className="grid grid-cols-5 gap-3 mt-3">
                   {GALLERY_ITEMS.map((item, i) => (
                     <button
                       key={item.id}
