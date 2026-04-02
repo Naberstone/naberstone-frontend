@@ -172,7 +172,7 @@ export function ProductPage() {
                 </div>
 
                 {/* Main display — video or image */}
-                <div className="aspect-[3/4] max-h-[55vh] bg-card border border-border rounded-2xl overflow-hidden glow-amber transition-all relative">
+                <div className="aspect-square bg-card border border-border rounded-2xl overflow-hidden glow-amber transition-all relative">
                   {GALLERY_ITEMS[activeImage].type === "video" ? (
                     <iframe
                       src={`https://www.youtube.com/embed/${GALLERY_ITEMS[activeImage].videoId}?autoplay=1&mute=1&loop=1&playlist=${GALLERY_ITEMS[activeImage].videoId}&controls=1&showinfo=0&rel=0&modestbranding=1`}
@@ -186,7 +186,7 @@ export function ProductPage() {
                       src={GALLERY_ITEMS[activeImage].src}
                       alt={GALLERY_ITEMS[activeImage].alt}
                       fill
-                      className="object-contain"
+                      className="object-cover"
                       sizes="(max-width: 1024px) 100vw, 50vw"
                       priority={activeImage === 0}
                     />
@@ -214,7 +214,7 @@ export function ProductPage() {
                           src={item.src}
                           alt={item.alt}
                           fill
-                          className="object-contain p-1"
+                          className="object-cover"
                           sizes="80px"
                         />
                       )}
