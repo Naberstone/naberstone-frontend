@@ -516,9 +516,10 @@ export function ProductPage() {
             : "translate-y-full opacity-0"
         }`}
       >
-        <div className="bg-background border-t border-border">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 pb-[calc(0.625rem+env(safe-area-inset-bottom))] flex items-center justify-between">
-            <div className="hidden sm:flex items-center gap-3">
+        <div className="border-t border-border sm:bg-background">
+          {/* Desktop: bar with label + button */}
+          <div className="hidden sm:flex max-w-7xl mx-auto px-6 lg:px-8 py-3 items-center justify-between">
+            <div className="flex items-center gap-3">
               <span className="text-sm font-semibold text-foreground">RFIS-X1</span>
               <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold tracking-[0.1em] uppercase text-red-400">
                 <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" />
@@ -527,12 +528,20 @@ export function ProductPage() {
             </div>
             <button
               onClick={() => setModalOpen(true)}
-              className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-semibold text-sm tracking-wide px-6 py-2.5 rounded-lg hover:bg-primary/90 transition-all active:translate-y-px w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-semibold text-sm tracking-wide px-6 py-2.5 rounded-lg hover:bg-primary/90 transition-all active:translate-y-px"
             >
               <Bell className="h-3.5 w-3.5" />
               {PRODUCT.waitlistCta}
             </button>
           </div>
+          {/* Mobile: full-width button flush to bottom */}
+          <button
+            onClick={() => setModalOpen(true)}
+            className="sm:hidden flex items-center justify-center gap-2 bg-primary text-primary-foreground font-semibold text-sm tracking-wide w-full py-4 pb-[calc(1rem+env(safe-area-inset-bottom))] hover:bg-primary/90 transition-all active:translate-y-px"
+          >
+            <Bell className="h-3.5 w-3.5" />
+            {PRODUCT.waitlistCta}
+          </button>
         </div>
       </div>
 
