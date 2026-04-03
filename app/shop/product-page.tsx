@@ -242,9 +242,6 @@ export function ProductPage() {
               <h1 className="text-5xl md:text-6xl lg:text-[72px] font-bold tracking-tight text-foreground leading-[1.02] mb-4">
                 {PRODUCT.name}
               </h1>
-              <p className="text-sm tracking-[0.15em] uppercase text-primary font-medium mb-6">
-                {PRODUCT.subtitle}
-              </p>
               <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-lg">
                 {PRODUCT.heroDescription}
               </p>
