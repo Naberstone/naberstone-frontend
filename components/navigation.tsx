@@ -25,7 +25,7 @@ const navLinks: NavLink[] = [
   { label: "Applications", href: "/applications" },
   { label: "Standards", href: "/standards" },
   { label: "Partnerships", href: "/partnerships" },
-  { label: "Shop", href: "/shop" },
+  // { label: "Shop", href: "/shop" }, // Temporarily unpublished
   { label: "Contact", href: "/contact" },
 ];
 

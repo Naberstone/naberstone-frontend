@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/api/", "/shop/success"],
+      disallow: ["/api/", "/shop/", "/shop"],
     },
     sitemap: "https://www.naberstone.com/sitemap.xml",
   };
