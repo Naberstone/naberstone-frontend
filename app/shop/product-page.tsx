@@ -350,10 +350,8 @@ export function ProductPage() {
                 </div>
               </div>
               <div className="bg-card border border-primary/20 rounded-xl p-6">
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  <span className="text-foreground font-semibold">The first RFIS-X1 batch sold out before we could even list it publicly.</span>{" "}
-                  Get on the waitlist now to lock in your spot for the next release.
-                </p>
+                <p className="text-foreground font-semibold text-sm">The first RFIS-X1 batch sold out before we could even list it publicly.</p>
+                <p className="text-sm text-muted-foreground mt-1">Get on the waitlist now to lock in your spot for the next release.</p>
               </div>
             </div>
           </div>
